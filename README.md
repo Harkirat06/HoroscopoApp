@@ -1,0 +1,6 @@
+-  Horoscopo diario y e en un futuro en notificacion diaria
+-  Informacion sobre tu personalidad
+-  Ranking semanal
+-  Compatibilidad con otro
+-  Guardar Perfil
+-  Guardar preferencias del usuario
