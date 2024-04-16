@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "dadm.hsingh.quotationshake"
+    namespace = "dadm.hsingh.horoscopoApp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dadm.hsingh.quotationshake"
+        applicationId = "dadm.hsingh.horoscopoApp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
