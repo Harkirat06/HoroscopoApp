@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import dadm.hsingh.horoscopoApp.R
-import dadm.hsingh.horoscopoApp.databinding.FragmentCalculatorBinding
 import dadm.hsingh.horoscopoApp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){

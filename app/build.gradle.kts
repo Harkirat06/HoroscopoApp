@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "dadm.hsingh.horoscopoApp"
+    namespace = "dadm.hsingh.horoscopoapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dadm.hsingh.horoscopoApp"
+        applicationId = "dadm.hsingh.horoscopoapp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -43,7 +43,6 @@ android {
 dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    implementation(libs.androidx.navigation.fragment)
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("androidx.preference:preference-ktx:1.2.1")

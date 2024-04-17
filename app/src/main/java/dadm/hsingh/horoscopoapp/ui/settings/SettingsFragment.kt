@@ -3,9 +3,7 @@ package dadm.hsingh.horoscopoapp.ui.settings
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceFragmentCompat
 import dadm.hsingh.horoscopoApp.R
-import dadm.hsingh.horoscopoApp.databinding.FragmentProfileBinding
 import dadm.hsingh.horoscopoApp.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment(R.layout.fragment_settings){
