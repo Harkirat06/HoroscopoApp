@@ -1,5 +1,7 @@
 package dadm.hsingh.horoscopoapp.ui
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -14,6 +16,7 @@ import dadm.hsingh.horoscopoapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-
         setSupportActionBar(binding.toolbar)
         navController = binding.NavHost.getFragment<NavHostFragment>().navController
         val navigationBarView = binding.bottomNavigationView as NavigationBarView
@@ -30,7 +32,14 @@ class MainActivity : AppCompatActivity() {
         val appBar = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBar)
 
+        sharedPreferences = getSharedPreferences("onBoarding", MODE_PRIVATE)
 
+        // Comprueba si es la primera vez que se ejecuta la aplicación
+        val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
 
+        if (isFirstRun) {
+            val intent = Intent(this, OnBoardingActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
