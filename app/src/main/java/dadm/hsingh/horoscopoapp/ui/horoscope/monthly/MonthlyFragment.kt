@@ -1,4 +1,4 @@
-package dadm.hsingh.horoscopoapp.ui.monthly
+package dadm.hsingh.horoscopoapp.ui.horoscope.monthly
 
 import androidx.fragment.app.Fragment
 import dadm.hsingh.horoscopoApp.R

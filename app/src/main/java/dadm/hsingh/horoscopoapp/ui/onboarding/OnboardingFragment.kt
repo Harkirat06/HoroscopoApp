@@ -1,4 +1,4 @@
 package dadm.hsingh.horoscopoapp.ui.onboarding
 
-class OnBoardingFragment{
+class OnboardingFragment{
 }
