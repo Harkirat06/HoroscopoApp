@@ -3,8 +3,8 @@ package dadm.hsingh.horoscopoapp.ui.horoscope
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import dadm.hsingh.horoscopoApp.R
-import dadm.hsingh.horoscopoApp.databinding.FragmentHoroscopeBinding
+import dadm.hsingh.horoscopoapp.R
+import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
 
 class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 

@@ -3,8 +3,8 @@ package dadm.hsingh.horoscopoapp.ui.compatibility
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import dadm.hsingh.horoscopoApp.R
-import dadm.hsingh.horoscopoApp.databinding.FragmentCompatibilityBinding
+import dadm.hsingh.horoscopoapp.R
+import dadm.hsingh.horoscopoapp.databinding.FragmentCompatibilityBinding
 
 class CompatibilityFragment : Fragment(R.layout.fragment_compatibility){
 

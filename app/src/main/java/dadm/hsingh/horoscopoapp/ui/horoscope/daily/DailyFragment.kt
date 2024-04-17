@@ -1,6 +1,6 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope.daily
 
 import androidx.fragment.app.Fragment
-import dadm.hsingh.horoscopoApp.R
+import dadm.hsingh.horoscopoapp.R
 
 class DailyFragment : Fragment(R.layout.fragment_daily)
