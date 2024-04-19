@@ -2,4 +2,17 @@
     <string name="app_name">HoroscopoApp</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed auctor ante sed est ultricies, non accumsan lorem varius. Phasellus
+        fringilla eros vitae odio suscipit, at consectetur velit lacinia. Proin varius
+        efficitur lorem, at fermentum mi vestibulum sed. Nullam a augue ut mi euismod
+        consequat. Integer euismod justo at tellus blandit, eget aliquet velit
+        vestibulum. Sed vitae posuere nulla. Sed vel fermentum lectus. Integer mattis
+        augue vel enim hendrerit, vel fermentum orci mattis. Vivamus hendrerit
+        malesuada sem. Vivamus at mauris nec odio dapibus fringilla vel sit amet est.
+        Ut nec velit quis ante tincidunt consequat. Nunc ac sapien nec ante vulputate
+        malesuada eget non lorem. Curabitur et magna leo. Sed vitae bibendum dolor.
+        Sed feugiat, nunc non tempus dapibus, justo libero tempor libero, nec mattis
+        odio ligula sit amet magna. Suspendisse vitae massa nec augue cursus fermentum.
+    </string>
 </resources>
