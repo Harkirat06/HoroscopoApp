@@ -25,28 +25,6 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
     private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
 
-/*
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHoroscopeBinding.inflate(layoutInflater)
-        setUpTabLayoutWithViewPager()
-        return binding.root
-
-    }
-
-    private fun setUpTabLayoutWithViewPager() {
-        binding.viewPager2.adapter = TabPagerAdapter(this)
-        TabLayoutMediator(binding.tabLayout, binding.viewPager2){
-            tab, position -> tab.text = tabTitles[position]
-
-        }.attach()
-    }
-
- */
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
