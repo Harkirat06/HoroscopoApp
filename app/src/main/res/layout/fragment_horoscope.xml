@@ -24,7 +24,6 @@
             android:layout_gravity="center"
             android:layout_margin="50dp"
             android:layout_marginTop="?attr/actionBarSize"
-            android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/capricorn" />
 
