@@ -1,26 +1,37 @@
 package dadm.hsingh.horoscopoapp.data.friend
 
+import dadm.hsingh.horoscopoapp.data.friend.model.FriendDto
+import dadm.hsingh.horoscopoapp.data.friend.model.toDatabaseDto
+import dadm.hsingh.horoscopoapp.data.friend.model.toDomain
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class FriendsRepositoryImpl : FriendsRepository{
+class FriendsRepositoryImpl@Inject constructor(
+    private val dataSource: FriendsDataSource
+) : FriendsRepository{
     override suspend fun addFriend(friend: Friend) {
-        TODO("Not yet implemented")
+        dataSource.addFriend(friend.toDatabaseDto())
     }
 
     override suspend fun deleteFriend(friend: Friend) {
-        TODO("Not yet implemented")
+        dataSource.deleteFriend(friend.toDatabaseDto())
     }
 
     override fun getAllFriend(): Flow<List<Friend>> {
-        TODO("Not yet implemented")
+        return dataSource.getAllFriend().map { list -> list.map { it.toDomain() } }
     }
 
     override fun getFriendById(id: String): Flow<Friend?> {
-        TODO("Not yet implemented")
+        return dataSource.getFriendById(id).map { it?.toDomain() }
+    }
+
+    override fun getFriendByName(name: String): Flow<List<Friend>> {
+        return dataSource.getAllFriend().map { list -> list.map { it.toDomain() } }
     }
 
     override suspend fun deleteAllFriend() {
-        TODO("Not yet implemented")
+        dataSource.deleteAllFriend()
     }
 }

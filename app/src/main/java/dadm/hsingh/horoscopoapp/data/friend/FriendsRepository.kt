@@ -9,5 +9,6 @@ interface FriendsRepository {
     suspend fun deleteFriend(friend: Friend)
     fun getAllFriend(): Flow<List<Friend>>
     fun getFriendById(id: String): Flow<Friend?>
+    fun getFriendByName(name: String) : Flow<List<Friend>>
     suspend fun deleteAllFriend()
 }

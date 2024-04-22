@@ -8,5 +8,6 @@ interface FriendsDataSource {
     suspend fun deleteFriend(friend: FriendDto)
     fun getAllFriend(): Flow<List<FriendDto>>
     fun getFriendById(id: String): Flow<FriendDto?>
+    fun getFriendByName(name: String): Flow<List<FriendDto>>
     suspend fun deleteAllFriend()
 }
