@@ -13,8 +13,10 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationBarView
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController

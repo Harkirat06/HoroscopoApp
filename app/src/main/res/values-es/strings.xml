@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HoroscopoApp</string>
+    <string name="language">Idioma</string>
+    <string name="english_language">Inglés</string>
+    <string name="spanish_language">Español</string>
+    <string name="your_name">Tu nombre</string>
+    <string name="your_name_hint">El nombre por el cual prefieres que te llamen</string>
+</resources>

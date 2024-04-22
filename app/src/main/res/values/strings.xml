@@ -26,4 +26,9 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="mobile_phone">Mobile phone</string>
     <string name="email">Email</string>
+    <string name="language">Language</string>
+    <string name="english_language">English</string>
+    <string name="spanish_language">Spanish</string>
+    <string name="your_name">Your name</string>
+    <string name="your_name_hint" >The name you prefer to be called by</string>
 </resources>
