@@ -19,8 +19,8 @@ class SettingsRepositoryImpl
 
     override suspend fun getLanguageSnapshot(): String = dataSource.getLanguageSnapshot()
 
-    override suspend fun setLanguage(lang: String) {
-        dataSource.setLanguage(lang)
+    override suspend fun setLanguage(language: String) {
+        dataSource.setLanguage(language)
     }
 
 }
