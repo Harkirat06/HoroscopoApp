@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentFriendsBinding
-import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import java.time.LocalDate
 import java.time.LocalTime
