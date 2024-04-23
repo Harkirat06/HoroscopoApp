@@ -33,7 +33,13 @@ class MainActivity : AppCompatActivity() {
         navController = binding.NavHost.getFragment<NavHostFragment>().navController
         val navigationBarView = binding.bottomNavigationView as NavigationBarView
         navigationBarView.setupWithNavController(navController)
-        val appBar = AppBarConfiguration(navController.graph)
+        val appBar = AppBarConfiguration(
+            setOf(
+                R.id.profileFragment,
+                R.id.horoscopeFragment,
+                R.id.compatibilityFragment,
+                R.id.settingsFragment
+        ))
         setupActionBarWithNavController(navController, appBar)
 
         sharedPreferences = getSharedPreferences("onBoarding", MODE_PRIVATE)
