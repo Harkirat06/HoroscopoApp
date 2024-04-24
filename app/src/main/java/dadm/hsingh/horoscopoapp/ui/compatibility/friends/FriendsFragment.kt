@@ -1,18 +1,27 @@
 package dadm.hsingh.horoscopoapp.ui.compatibility.friends
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentFriendsBinding
 import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
+import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormFragment
 import java.time.LocalDate
 import java.time.LocalTime
+import java.util.Locale
 
 class FriendsFragment : Fragment(R.layout.fragment_friends){
     private var _binding : FragmentFriendsBinding? = null
     private val binding get() = _binding!!
+
+    private val list = generateRandomFriendsList(20)
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
@@ -22,8 +31,33 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
         val adapter = FriendsListAdapter(::onItemClick)
         binding.textView.adapter = adapter
 
-        adapter.submitList(generateRandomFriendsList(20))
+        adapter.submitList(list)
+
+        binding.addFriend.setOnClickListener {
+            FriendFormFragment().show(childFragmentManager, "")
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Para implementar mas tarde
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Para implementar mas tarde
+                return true
+            }
+
+        })
+
+
+
+
     }
+
+
+
+
 
     private fun onItemClick(s: String) {
 

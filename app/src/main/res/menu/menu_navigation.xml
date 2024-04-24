@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/profileFragment"
-        android:title="profile"
+        android:id="@+id/compatibilityFragment"
+        android:title="compatibility"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/profile"/>
+        android:icon="@drawable/compatible"
+        />
 
     <item
         android:id="@+id/horoscopeFragment"
@@ -16,16 +17,9 @@
         android:icon="@drawable/home"/>
 
     <item
-        android:id="@+id/compatibilityFragment"
-        android:title="compatibility"
+        android:id="@+id/profileFragment"
+        android:title="profile"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/compatible"
-        />
-
-    <item
-        android:id="@+id/settingsFragment"
-        android:title="settings"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/settings"/>
+        android:icon="@drawable/profile"/>
 
 </menu>

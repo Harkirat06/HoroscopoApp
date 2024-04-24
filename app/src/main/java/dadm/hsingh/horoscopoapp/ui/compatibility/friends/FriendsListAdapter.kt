@@ -29,6 +29,8 @@ class FriendsListAdapter(private val onItemClick: (String) -> Unit) : ListAdapte
         }
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(onItemClick, FriendItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

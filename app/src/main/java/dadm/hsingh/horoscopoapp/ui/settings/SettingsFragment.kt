@@ -21,4 +21,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings){
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        fun newInstance() = SettingsFragment()
+    }
 }
