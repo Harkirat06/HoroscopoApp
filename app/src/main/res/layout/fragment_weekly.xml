@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -19,55 +21,418 @@
                 android:id="@+id/textViewTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Título Aquí"
+                android:text="@string/weekly_ranking"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"
+                />
 
-            <!-- Párrafo largo -->
-            <TextView
-                android:id="@+id/textViewParagraph"
+            <!-- chatGPT: aqui lo quiero tener-->
+
+            <!-- Aquí puedes añadir más atributos según sea necesario, como ancho, alto, márgenes, etc. -->
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:textSize="18sp"
-                android:padding="16dp"/>
+                android:layout_margin="50dp"
 
-            <!-- Apartado 1 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Apartado 1"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="16dp"/>
+                >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
+                <!-- Encabezado de la tabla -->
+                <TableRow
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Del 31 de jul al 06 de Agosto"
+                        android:textStyle="italic"
+                        android:gravity="center"
+                        android:background="@color/md_theme_light_inversePrimary"
+                        />
 
-            <!-- Apartado 2 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Apartado 2"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="16dp"/>
+                </TableRow>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="1"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="2"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="3"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="4"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="5"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="6"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="7"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="8"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="9"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="10"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="11"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:background="@color/md_theme_light_surfaceTint"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="12"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/settings"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Capricornio"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:textColor="@android:color/white"
+                        />
+                </TableRow>
+
+
+                <!-- Repite este bloque para cada fila del ranking -->
+
+            </TableLayout>
+
+
+
+
 
             <!-- Puedes añadir más apartados según sea necesario -->
 

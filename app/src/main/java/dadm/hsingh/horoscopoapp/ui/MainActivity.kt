@@ -28,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
         setContentView(binding.root)
-
+        binding.toolbar.setTitleTextAppearance(this, R.style.ToolbarTitleText);
         setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
         navController = binding.NavHost.getFragment<NavHostFragment>().navController
         val navigationBarView = binding.bottomNavigationView as NavigationBarView
         navigationBarView.setupWithNavController(navController)

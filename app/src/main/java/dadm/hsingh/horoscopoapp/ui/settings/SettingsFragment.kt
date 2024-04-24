@@ -1,21 +1,28 @@
 package dadm.hsingh.horoscopoapp.ui.settings
 
 import android.os.Bundle
-import androidx.preference.PreferenceFragmentCompat
+import android.view.View
+import androidx.fragment.app.Fragment
 import dadm.hsingh.horoscopoapp.R
-import dadm.hsingh.horoscopoapp.data.settings.SettingsPreferenceDataStore
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import dadm.hsingh.horoscopoapp.databinding.FragmentSettingsBinding
 
-@AndroidEntryPoint
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : Fragment(R.layout.fragment_settings){
 
-    @Inject
-    lateinit var settingsPreferenceDataStore: SettingsPreferenceDataStore
+    private var _binding : FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.preferenceDataStore = settingsPreferenceDataStore
-        setPreferencesFromResource(R.xml.preferences_settings, rootKey)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSettingsBinding.bind(view)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        fun newInstance() = SettingsFragment()
+    }
 }
