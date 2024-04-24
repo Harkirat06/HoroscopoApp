@@ -3,5 +3,5 @@ package dadm.hsingh.horoscopoapp.domain.model
 
 data class DailyHoroscope(
     val dailyHoroscopeText : String,
-    val dayOfWeek: Int,
+    val date: String,
 ) : Horoscope(dailyHoroscopeText)

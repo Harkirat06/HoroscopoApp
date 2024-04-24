@@ -2,16 +2,18 @@
     <string name="app_name">HoroscopoApp</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
-    <string name="lorem">
-
-        The Capricorn Crew may have cause to celebrate today when 2024’s only
-        full moon in Scorpio powers up your collaboration center. You might find
-        out that a group endeavor has gotten the go-ahead or been singled out for
-        an award. Because the eleventh house governs technology and progress, you
-        need to turn your gaze toward the future. Look into apps that can coordinate
-        team process and facilitate smooth communication. If you’ve been flying solo,
-        this lunation cues you to join forces to lighten your workload and make life a
-        lot more fun!
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed auctor ante sed est ultricies, non accumsan lorem varius. Phasellus
+        fringilla eros vitae odio suscipit, at consectetur velit lacinia. Proin varius
+        efficitur lorem, at fermentum mi vestibulum sed. Nullam a augue ut mi euismod
+        consequat. Integer euismod justo at tellus blandit, eget aliquet velit
+        vestibulum. Sed vitae posuere nulla. Sed vel fermentum lectus. Integer mattis
+        augue vel enim hendrerit, vel fermentum orci mattis. Vivamus hendrerit
+        malesuada sem. Vivamus at mauris nec odio dapibus fringilla vel sit amet est.
+        Ut nec velit quis ante tincidunt consequat. Nunc ac sapien nec ante vulputate
+        malesuada eget non lorem. Curabitur et magna leo. Sed vitae bibendum dolor.
+        Sed feugiat, nunc non tempus dapibus, justo libero tempor libero, nec mattis
+        odio ligula sit amet magna. Suspendisse vitae massa nec augue cursus fermentum.
     </string>
     <string name="zodiac_connection">Zodiac Connection</string>
     <string name="calculate">calculate</string>
@@ -29,4 +31,9 @@
     <string name="weekly_ranking">Weekly Ranking</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="language">Language</string>
+    <string name="english_language">English</string>
+    <string name="spanish_language">Spanish</string>
+    <string name="your_name">Your name</string>
+    <string name="your_name_hint" >The name you prefer to be called by</string>
 </resources>

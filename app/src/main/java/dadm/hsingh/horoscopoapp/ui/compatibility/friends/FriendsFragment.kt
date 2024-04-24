@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentFriendsBinding
-import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormFragment
 import java.time.LocalDate

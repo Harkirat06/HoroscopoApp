@@ -9,12 +9,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationBarView
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.ActivityMainBinding
-import java.time.LocalDate
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -36,7 +36,13 @@ class MainActivity : AppCompatActivity() {
         navController = binding.NavHost.getFragment<NavHostFragment>().navController
         val navigationBarView = binding.bottomNavigationView as NavigationBarView
         navigationBarView.setupWithNavController(navController)
-        val appBar = AppBarConfiguration(navController.graph)
+        val appBar = AppBarConfiguration(
+            setOf(
+                R.id.profileFragment,
+                R.id.horoscopeFragment,
+                R.id.compatibilityFragment,
+                R.id.settingsFragment
+        ))
         setupActionBarWithNavController(navController, appBar)
 
         sharedPreferences = getSharedPreferences("onBoarding", MODE_PRIVATE)
