@@ -5,14 +5,15 @@ import dadm.hsingh.horoscopoapp.domain.model.DailyHoroscope
 
 @JsonClass(generateAdapter = true)
 data class DailyHoroscopeDto(
-    val data : HoroscopeData,
+    val data : DailyHoroscopeData,
     val status: Int,
     val success: Boolean
 ){
-    fun toDomain() = DailyHoroscope(dailyHoroscopeText = data.horoscopeData, date = data.date)
+    fun toDomain() = DailyHoroscope(dailyHoroscopeText = data.horoscope_data, date = data.date)
 }
 
-data class HoroscopeData(
+@JsonClass(generateAdapter = true)
+data class DailyHoroscopeData(
     val date: String,
-    val horoscopeData: String
+    val horoscope_data: String
 )

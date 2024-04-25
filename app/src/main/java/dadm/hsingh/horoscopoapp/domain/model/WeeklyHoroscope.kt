@@ -4,5 +4,5 @@ import java.time.DayOfWeek
 
 data class WeeklyHoroscope(
     val weeklyHoroscopeText : String,
-    val week: Int
+    val week: String
 ) : Horoscope(weeklyHoroscopeText)
