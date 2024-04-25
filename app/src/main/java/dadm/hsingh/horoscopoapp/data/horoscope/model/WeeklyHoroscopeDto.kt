@@ -4,7 +4,6 @@ import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.WeeklyHoroscope
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 
 @JsonClass(generateAdapter = true)
 data class WeeklyHoroscopeDto(

@@ -1,6 +1,5 @@
 package dadm.hsingh.horoscopoapp.domain.model
 
-import java.time.DayOfWeek
 import java.time.LocalDate
 
 data class WeeklyHoroscope(

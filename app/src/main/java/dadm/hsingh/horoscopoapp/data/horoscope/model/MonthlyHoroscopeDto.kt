@@ -4,7 +4,6 @@ import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.MonthlyHoroscope
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class MonthlyHoroscopeDto(
