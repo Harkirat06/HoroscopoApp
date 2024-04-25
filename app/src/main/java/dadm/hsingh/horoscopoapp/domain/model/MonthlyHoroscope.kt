@@ -2,9 +2,10 @@ package dadm.hsingh.horoscopoapp.domain.model
 
 data class MonthlyHoroscope(
     val monthlyHoroscopeText : String,
-    val month: String,
-    val challengingDays: String,
-    val standoutDays: String
+    val month: Int,
+    val year: Int,
+    val challengingDays: IntArray ,
+    val standoutDays: IntArray
 ) : Horoscope(monthlyHoroscopeText)
 
 /**
