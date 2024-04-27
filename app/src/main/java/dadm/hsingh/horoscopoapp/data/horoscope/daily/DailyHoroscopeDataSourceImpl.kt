@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Inject
+import android.util.Log
 
 class DailyHoroscopeDataSourceImpl @Inject constructor(
     private val retrofit: Retrofit
