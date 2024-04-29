@@ -7,7 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,20 +20,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:padding="20dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_information"
-                    android:textSize="15sp"
+                    android:textSize="25sp"
                     android:layout_alignParentStart="true"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    />
             </RelativeLayout>
 
             <RelativeLayout
@@ -41,12 +44,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="40dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/username"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
@@ -54,22 +57,22 @@
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
                     android:text="admin"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gender"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
@@ -77,101 +80,103 @@
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
                     android:text="undefined"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="xx"
-                    android:textSize="15sp"
+                    android:text="female"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date_of_birth"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="_07_02_2003"
-                    android:textSize="15sp"
+                    android:text="07/02/2003"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mobile_phone"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="_91_9000000009"
-                    android:textSize="15sp"
+                    android:text="696435965"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
                 <TextView
+                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="axxxxxxa_gmail_com"
+                    android:text="admin.admin@gmail.com"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
-                    android:textStyle="bold"/>
+                    android:layout_alignBottom="@id/email"
+                    />
             </RelativeLayout>
         </LinearLayout>
 
