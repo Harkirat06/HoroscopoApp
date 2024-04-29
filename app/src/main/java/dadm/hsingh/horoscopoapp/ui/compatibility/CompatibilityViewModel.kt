@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
+/*
 @HiltViewModel
 class CompatibilityViewModel @Inject constructor(
-    private val calculator: CompatibilityCalculator,
     private val rep: FriendsRepository
     ): ViewModel(){
 
@@ -24,3 +24,5 @@ class CompatibilityViewModel @Inject constructor(
 
 
 }
+
+ */
