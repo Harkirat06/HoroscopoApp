@@ -4,6 +4,7 @@ import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.DailyHoroscope
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 @JsonClass(generateAdapter = true)
 data class DailyHoroscopeDto(
@@ -12,12 +13,20 @@ data class DailyHoroscopeDto(
     val success: Boolean
 ){
     fun toDomain(): DailyHoroscope {
-        val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy")
-        val date = LocalDate.parse(data.date.trim(), formatter)
+        try {
+            val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy")
+            val date = LocalDate.parse(data.date.trim(), formatter)
 
+            return DailyHoroscope(
+                dailyHoroscopeText = data.horoscope_data,
+                date = date
+            )
+        } catch (e: DateTimeParseException) {
+            println("Error al parsear la fecha: ${e.message}")
+        }
         return DailyHoroscope(
             dailyHoroscopeText = data.horoscope_data,
-            date = date
+            date = LocalDate.now()
         )
     }
 }
