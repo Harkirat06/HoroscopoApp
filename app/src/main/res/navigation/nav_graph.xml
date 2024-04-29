@@ -13,7 +13,9 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/horoscopeFragment"

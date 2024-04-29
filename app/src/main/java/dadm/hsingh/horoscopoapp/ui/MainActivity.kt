@@ -36,12 +36,11 @@ class MainActivity : AppCompatActivity() {
         navController = binding.NavHost.getFragment<NavHostFragment>().navController
         val navigationBarView = binding.bottomNavigationView as NavigationBarView
         navigationBarView.setupWithNavController(navController)
-        val appBar = AppBarConfiguration(
-            setOf(
-                R.id.profileFragment,
-                R.id.horoscopeFragment,
-                R.id.compatibilityFragment,
-                R.id.settingsFragment
+        val appBar = AppBarConfiguration(setOf(
+            R.id.profileFragment,
+            R.id.horoscopeFragment,
+            R.id.compatibilityFragment,
+            // R.id.settingsFragment (lo excluimos para que aparezca tenga flecha hacia atrás)
         ))
         setupActionBarWithNavController(navController, appBar)
 
@@ -55,4 +54,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    // Soporte a la flecha hacia atrás en los Settings
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() // || super.onSupportNavigateUp()
+    }
+
 }
