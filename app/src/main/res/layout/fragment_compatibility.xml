@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<LinearLayout
+    android:id="@+id/compatibilityFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
 
+    >
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabMode="fixed"
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabSelectedTextAppearance="@color/md_theme_light_onSecondary"
+        app:tabIndicatorColor="@null"
+        app:tabIndicator="@drawable/tab_indicator"
+        android:layout_weight="0.005"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+
+
+</LinearLayout>
+
+
+
+
+
+<!--
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/compatibilityFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -35,3 +73,5 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+
