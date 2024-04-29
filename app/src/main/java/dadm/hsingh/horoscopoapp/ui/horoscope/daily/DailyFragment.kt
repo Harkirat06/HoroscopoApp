@@ -27,8 +27,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-
-
 class DailyFragment : Fragment(R.layout.fragment_daily){
     private var _binding : FragmentDailyBinding? = null
     private val binding get() = _binding!!
@@ -60,8 +58,6 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
                 }
             }
         }
-
-        Log.d("FRagment", "Holaaa1")
 
         //val frame1 = requireActivity().findViewById<FrameLayout>(R.id.frame1)
 

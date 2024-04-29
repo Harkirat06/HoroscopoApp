@@ -11,13 +11,6 @@ class DailyHoroscopeRepositoryImpl @Inject constructor(
     private val checker: ConnectivityChecker
 ) : DailyHoroscopeRepository{
 
-    private lateinit var sign: String
-
-    init {
-        //Obtener el valor seleccionado
-        sign = "leo"
-    }
-
     override suspend fun getDailyHoroscope(sign: String): Result<DailyHoroscope> {
         if (checker.isConnectionAvailable()) {
             return dataSource.getDailyHoroscope(sign).toDailyDomain()

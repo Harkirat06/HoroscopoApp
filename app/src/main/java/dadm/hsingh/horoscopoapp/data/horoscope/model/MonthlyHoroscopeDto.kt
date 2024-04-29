@@ -4,6 +4,7 @@ import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.MonthlyHoroscope
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 @JsonClass(generateAdapter = true)
 data class MonthlyHoroscopeDto(
@@ -13,7 +14,13 @@ data class MonthlyHoroscopeDto(
 ) {
     fun toDomain(): MonthlyHoroscope {
         val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-        val yearMonth = YearMonth.parse(data.month, formatter)
+        var yearMonth = YearMonth.now()
+
+        try {
+            yearMonth = YearMonth.parse(data.month, formatter)
+        } catch (e: DateTimeParseException) {
+            println("Error al parsear la fecha: ${e.message}")
+        }
 
         // Obtener el mes y el año por separado
         val month = yearMonth.monthValue
