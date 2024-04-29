@@ -3,12 +3,16 @@ package dadm.hsingh.horoscopoapp.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
+import dadm.hsingh.horoscopoapp.databinding.FragmentSettingsBinding
 import dadm.hsingh.horoscopoapp.ui.compatibility.TabPagerAdapter2
+import dadm.hsingh.horoscopoapp.ui.settings.SettingsFragment
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
 
@@ -55,6 +59,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
                 binding.tabLayoutProfile.selectTab((binding.tabLayoutProfile.getTabAt((position))))
             }
         })
+
+        //configurar el boton de ajustes
+
+        binding.settingsButton.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.NavHost, SettingsFragment(), "findThisFragment")
+                ?.addToBackStack(null)
+                ?.commit();
+        }
+
+
     }
 
     override fun onDestroyView() {

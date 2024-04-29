@@ -20,3 +20,4 @@ data class FriendDto (
     @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_PLACEBIRTH) val placeBirth: String,
     @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_ZODIACSIGN) val zodiacSign: Int
     )
+

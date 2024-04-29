@@ -1,22 +1,15 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
-import dadm.hsingh.horoscopoapp.ui.horoscope.daily.DailyFragment
-import dadm.hsingh.horoscopoapp.ui.horoscope.monthly.MonthlyFragment
-import dadm.hsingh.horoscopoapp.ui.horoscope.weekly.WeeklyFragment
-import dadm.hsingh.horoscopoapp.ui.onboarding.ViewPagerAdapter
+
 
 class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
@@ -64,6 +57,9 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
                 binding.tabLayout.selectTab((binding.tabLayout.getTabAt((position))))
             }
         })
+
+
+
 
 
     }
