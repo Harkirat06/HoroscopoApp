@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -63,10 +64,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         //configurar el boton de ajustes
 
         binding.settingsButton.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.NavHost, SettingsFragment(), "findThisFragment")
-                ?.addToBackStack(null)
-                ?.commit();
+            findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
 
 
