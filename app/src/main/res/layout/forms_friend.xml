@@ -88,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Fecha de nacimiento"
+            android:hint="@string/birth_date"
             android:layout_weight="1"
             />
 
@@ -120,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Hora de nacimiento (HH:MM)"
+            android:hint="@string/time_of_birth"
             android:layout_weight="1"
             />
 

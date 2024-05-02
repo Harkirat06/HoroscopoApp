@@ -24,4 +24,6 @@
     <string name="spanish_language">Español</string>
     <string name="your_name">Tu nombre</string>
     <string name="your_name_hint">El nombre por el cual prefieres que te llamen</string>
+    <string name="birth_date">Fecha de nacimiento (dd/MM/yyyy)</string>
+    <string name="time_of_birth">Hora de nacimiento (HH:MM)</string>
 </resources>

@@ -37,6 +37,7 @@ class FriendFormFragment : DialogFragment(R.layout.forms_friend){
             this.dismiss()
         }
 
+        binding.birthDateInput.editableText
         //DatePicker
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
