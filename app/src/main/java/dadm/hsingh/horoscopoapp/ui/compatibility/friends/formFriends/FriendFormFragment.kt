@@ -4,10 +4,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -15,12 +13,14 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FormsFriendBinding
+import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
 
-class FriendFormFragment : DialogFragment(R.layout.forms_friend){
+class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
     private var _binding: FormsFriendBinding? = null
     private  val binding
@@ -34,10 +34,19 @@ class FriendFormFragment : DialogFragment(R.layout.forms_friend){
         _binding = FormsFriendBinding.bind(view)
 
         binding.buttonCancel.setOnClickListener {
+            viewModel.resetFriend()
             this.dismiss()
         }
 
-        binding.birthDateInput.editableText
+        if(viewModel.friend.value != null){
+            val friend : Friend = viewModel.friend.value!!
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            binding.editTextName.text = Editable.Factory.getInstance().newEditable(friend.name)
+            binding.birthDateInput.text = Editable.Factory.getInstance().newEditable(friend.dateBirth.format(formatter).toString())
+            binding.birthTimeInput.text = Editable.Factory.getInstance().newEditable(friend.timeBirth.toString())
+            binding.editTextPlaceBirth.text = Editable.Factory.getInstance().newEditable(friend.placeBirth)
+        }
+
         //DatePicker
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
@@ -85,6 +94,7 @@ class FriendFormFragment : DialogFragment(R.layout.forms_friend){
                 binding.birthTimeInput.text.toString(),
                 binding.editTextPlaceBirth.text.toString()
             )
+            viewModel.resetFriend()
             this.dismiss()
         }
 

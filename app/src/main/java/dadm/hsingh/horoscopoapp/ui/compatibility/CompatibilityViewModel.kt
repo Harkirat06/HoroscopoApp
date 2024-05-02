@@ -8,8 +8,11 @@ import dadm.hsingh.horoscopoapp.domain.calculations.CompatibilityCalculator
 import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -24,6 +27,9 @@ import kotlin.random.Random
 class CompatibilityViewModel @Inject constructor(
     private val rep: FriendsRepository
     ): ViewModel(){
+
+    private val _friend = MutableStateFlow<Friend?>(null)
+    val friend = _friend.asStateFlow()
 
     val list = rep.getAllFriend().stateIn(
         scope = viewModelScope,
@@ -61,6 +67,15 @@ class CompatibilityViewModel @Inject constructor(
         viewModelScope.launch {
             rep.deleteFriend(friend)
         }
+    }
+
+    public fun setFriend(friend: Friend){
+        _friend.update {
+            friend
+        }
+    }
+    public fun resetFriend(){
+        _friend.update { null }
     }
 
 

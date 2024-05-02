@@ -63,9 +63,6 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
             }
         }
 
-
-
-
     }
 
 
@@ -73,8 +70,8 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
 
 
     private fun onEditClick(friend: Friend) {
-
-
+        viewModel.setFriend(friend)
+        FriendFormFragment().show(childFragmentManager, "")
     }
 
     private fun onDeleteClick(friend: Friend){
