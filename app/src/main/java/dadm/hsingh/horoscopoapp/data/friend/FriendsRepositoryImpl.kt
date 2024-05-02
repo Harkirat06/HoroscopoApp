@@ -34,4 +34,9 @@ class FriendsRepositoryImpl@Inject constructor(
     override suspend fun deleteAllFriend() {
         dataSource.deleteAllFriend()
     }
+
+    override suspend fun updateFriend(friend: Friend) {
+        dataSource.updateFriend(friend.toDatabaseDto())
+    }
+
 }

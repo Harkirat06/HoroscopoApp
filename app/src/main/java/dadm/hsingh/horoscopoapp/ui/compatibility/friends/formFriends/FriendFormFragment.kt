@@ -45,6 +45,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
             binding.birthDateInput.text = Editable.Factory.getInstance().newEditable(friend.dateBirth.format(formatter).toString())
             binding.birthTimeInput.text = Editable.Factory.getInstance().newEditable(friend.timeBirth.toString())
             binding.editTextPlaceBirth.text = Editable.Factory.getInstance().newEditable(friend.placeBirth)
+            binding.buttonAddFriend.text = getString(R.string.modify)
         }
 
         //DatePicker

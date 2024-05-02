@@ -23,7 +23,7 @@ class FriendsListAdapter(val onEditClick: (Friend) -> Unit, val onDeleteClick: (
         }
     }
 
-    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(onEditClick, onDeleteClick, FriendItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

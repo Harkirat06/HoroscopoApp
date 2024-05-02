@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
+import dadm.hsingh.horoscopoapp.data.friend.model.toDatabaseDto
 import dadm.hsingh.horoscopoapp.domain.calculations.CompatibilityCalculator
 import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
 import dadm.hsingh.horoscopoapp.domain.model.Friend
@@ -50,16 +51,35 @@ class CompatibilityViewModel @Inject constructor(
         val format = SimpleDateFormat("yyyy/MM/dd") // Formato del string de fecha
         val date: Date = format.parse(dateBirth) // Parseamos el string a Date
 
-        val friend = Friend(
-            id = Random.nextInt(100).toString(),
-            name = name,
-            dateBirth = dateBirth_local,
-            timeBirth = timeBirth_local,
-            placeBirth = placeBirth,
-            zodiacSign = getZodiacSign(date)
-        )
-        viewModelScope.launch {
-            rep.addFriend(friend)
+        if(friend.value != null){
+            val newFriend = _friend.value?.let {
+                Friend(
+                    id = it.id,
+                    name = name,
+                    dateBirth = dateBirth_local,
+                    timeBirth = timeBirth_local,
+                    placeBirth = placeBirth,
+                    zodiacSign = getZodiacSign(date)
+                )
+            }
+            viewModelScope.launch {
+                if (newFriend != null) {
+                    rep.updateFriend(newFriend)
+                }
+            }
+
+        }else{
+            val friend = Friend(
+                id = Random.nextInt(100).toString(),
+                name = name,
+                dateBirth = dateBirth_local,
+                timeBirth = timeBirth_local,
+                placeBirth = placeBirth,
+                zodiacSign = getZodiacSign(date)
+            )
+            viewModelScope.launch {
+                rep.addFriend(friend)
+            }
         }
     }
 

@@ -36,4 +36,5 @@
     <string name="your_name_hint" >The name you prefer to be called by</string>
     <string name="birth_date">Birth Date (dd/MM/yyyy)</string>
     <string name="time_of_birth">Time of Birth (HH:MM)</string>
+    <string name="modify">Modify</string>
 </resources>

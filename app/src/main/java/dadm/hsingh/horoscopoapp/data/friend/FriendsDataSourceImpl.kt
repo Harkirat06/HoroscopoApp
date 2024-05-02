@@ -29,4 +29,9 @@ class FriendsDataSourceImpl @Inject constructor(private val friendsDao: FriendsD
         friendsDao.deleteAllFriends()
     }
 
+    override suspend fun updateFriend(friend: FriendDto) {
+        friendsDao.updateFriend(friend)
+    }
+
+
 }
