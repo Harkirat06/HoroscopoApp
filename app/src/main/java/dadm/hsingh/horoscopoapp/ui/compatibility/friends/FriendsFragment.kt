@@ -33,7 +33,7 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFriendsBinding.bind(view)
 
-        val adapter = FriendsListAdapter(::onItemClick)
+        val adapter = FriendsListAdapter(::onEditClick, ::onDeleteClick)
         binding.textView.adapter = adapter
 
         //adapter.submitList(list)
@@ -44,7 +44,7 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Para implementar mas tarde
+
                 return true
             }
 
@@ -72,7 +72,13 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
 
 
 
-    private fun onItemClick(s: String) {
+    private fun onEditClick(friend: Friend) {
+
+
+    }
+
+    private fun onDeleteClick(friend: Friend){
+        viewModel.removeFriend(friend)
 
     }
 

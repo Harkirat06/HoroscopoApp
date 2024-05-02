@@ -57,6 +57,11 @@ class CompatibilityViewModel @Inject constructor(
         }
     }
 
+    public fun removeFriend(friend : Friend){
+        viewModelScope.launch {
+            rep.deleteFriend(friend)
+        }
+    }
 
 
 }
