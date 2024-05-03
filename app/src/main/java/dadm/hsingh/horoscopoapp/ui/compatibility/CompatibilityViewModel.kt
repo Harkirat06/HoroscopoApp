@@ -12,6 +12,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -32,11 +34,26 @@ class CompatibilityViewModel @Inject constructor(
     private val _friend = MutableStateFlow<Friend?>(null)
     val friend = _friend.asStateFlow()
 
-    val list = rep.getAllFriend().stateIn(
-        scope = viewModelScope,
-        initialValue = listOf(),
-        started = SharingStarted.WhileSubscribed()
-    )
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery = _searchQuery.asStateFlow()
+
+    val filteredFriends = searchQuery
+        .flatMapLatest { query ->
+            rep.getAllFriend().map { friends ->
+                if (query.isEmpty()) {
+                    friends
+                } else {
+                    friends.filter { friend ->
+                        friend.name.contains(query, ignoreCase = true)
+                    }
+                }
+            }
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = listOf()
+        )
 
     public fun addToFavourites(name: String, dateBirth: String, timeBirth: String, placeBirth: String){
 
@@ -97,7 +114,8 @@ class CompatibilityViewModel @Inject constructor(
     public fun resetFriend(){
         _friend.update { null }
     }
-
-
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query
+    }
 }
 

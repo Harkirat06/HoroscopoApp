@@ -24,10 +24,7 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
     private var _binding : FragmentFriendsBinding? = null
     private val binding get() = _binding!!
 
-    private val list = generateRandomFriendsList(20)
-
     private val viewModel: CompatibilityViewModel by activityViewModels()
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
@@ -36,38 +33,30 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
         val adapter = FriendsListAdapter(::onEditClick, ::onDeleteClick)
         binding.textView.adapter = adapter
 
-        //adapter.submitList(list)
-
         binding.addFriend.setOnClickListener {
             FriendFormFragment().show(childFragmentManager, "")
         }
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-
+                viewModel.setSearchQuery(query ?: "")
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Para implementar mas tarde
+                viewModel.setSearchQuery(newText ?: "")
                 return true
             }
-
         })
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.list.collect{
-                    adapter.submitList(viewModel.list.value)
+                viewModel.filteredFriends.collect { filteredList ->
+                    adapter.submitList(filteredList)
                 }
             }
         }
-
     }
-
-
-
-
 
     private fun onEditClick(friend: Friend) {
         viewModel.setFriend(friend)
@@ -76,7 +65,6 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
 
     private fun onDeleteClick(friend: Friend){
         viewModel.removeFriend(friend)
-
     }
 
     override fun onDestroyView() {
