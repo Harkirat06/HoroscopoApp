@@ -9,6 +9,7 @@ import dadm.hsingh.horoscopoapp.domain.calculations.CompatibilityCalculator
 import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,8 +36,9 @@ class CompatibilityViewModel @Inject constructor(
     val friend = _friend.asStateFlow()
 
     private val _searchQuery = MutableStateFlow("")
-    val searchQuery = _searchQuery.asStateFlow()
+    private val searchQuery = _searchQuery.asStateFlow()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val filteredFriends = searchQuery
         .flatMapLatest { query ->
             rep.getAllFriend().map { friends ->
