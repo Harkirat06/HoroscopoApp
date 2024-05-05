@@ -39,7 +39,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
     private val viewModel: CompatibilityViewModel by activityViewModels()
 
-    val pickMedia = registerForActivityResult(PickVisualMedia()){uri->
+    private val pickMedia = registerForActivityResult(PickVisualMedia()){ uri->
         if(uri!=null){
             val flag = Intent.FLAG_GRANT_READ_URI_PERMISSION
             context?.contentResolver?.takePersistableUriPermission(uri, flag)
@@ -67,6 +67,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
             binding.birthDateInput.text = Editable.Factory.getInstance().newEditable(friend.dateBirth.format(formatter).toString())
             binding.birthTimeInput.text = Editable.Factory.getInstance().newEditable(friend.timeBirth.toString())
             binding.editTextPlaceBirth.text = Editable.Factory.getInstance().newEditable(friend.placeBirth)
+            binding.imageViewFriend.setImageURI(Uri.parse(friend.imageUri))
             binding.buttonAddFriend.text = getString(R.string.modify)
         }
 
