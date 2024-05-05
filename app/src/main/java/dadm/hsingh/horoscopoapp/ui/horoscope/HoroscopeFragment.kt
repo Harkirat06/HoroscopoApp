@@ -6,20 +6,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
-import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
 import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
 import dadm.hsingh.horoscopoapp.ui.settings.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -30,7 +24,7 @@ class HoroscopeFragment : Fragment(R.layout.fragment_horoscope) {
 
     private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
 
-    private val settingsViewModel : SettingsViewModel by  viewModels()
+
 
 
 
@@ -72,19 +66,7 @@ class HoroscopeFragment : Fragment(R.layout.fragment_horoscope) {
             }
         })
 
-        // Modo oscuro. Hemos de activarlo aquí si está establecido ya que este es el primer fragment
-        // que se muestra
-        viewLifecycleOwner.lifecycleScope.launch {
-            settingsViewModel.darkMode.collect { isDarkModeEnabled ->
-                if (isDarkModeEnabled) {
-                    // Cambiar al tema oscuro
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                } else {
-                    // Cambiar al tema claro
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                }
-            }
-        }
+
 
     }
 

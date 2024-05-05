@@ -31,4 +31,8 @@
     <string name="friendBirthdays">Cumpleaños de amigos</string>
     <string name="yourDailyHoroscope">Tu horóscopo diario</string>
     <string name="dark_mode">Modo oscuro</string>
+    <string name="notification_channel_name">Notificaciones de Horóscopo</string>
+    <string name="notification_channel_description">Canal de notificaciones del Horóscopo</string>
+    <string name="reminder">Recordatorio</string>
+    <string name="reminderContent">\"¡Buenos días! Recuerda leer tu horóscopo de hoy\"</string>
 </resources>
