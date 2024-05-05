@@ -35,4 +35,36 @@ class SettingsPreferenceDataStore
         }
     }
 
+    override fun putBoolean(key: String?, value: Boolean) {
+        when (key) {
+            "dark_mode_pref" ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    settingsRepo.setDarkMode(value )
+                }
+            "notification_horoscope_pref" ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    settingsRepo.setNotificationHoroscope(value )
+                }
+            "notification_birthdays_pref" ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    settingsRepo.setNotificationBirthdays(value )
+                }
+        }
+    }
+
+    override fun getBoolean(key: String?, defValue: Boolean): Boolean {
+        return when (key) {
+            "dark_mode_pref" -> runBlocking<Boolean>(Dispatchers.IO) {
+                settingsRepo.getDarkModeSnapshot()
+            }
+            "notification_horoscope_pref" -> runBlocking<Boolean>(Dispatchers.IO) {
+                settingsRepo.getNotificationHoroscopeSnapshot()
+            }
+            "notification_birthdays_pref" -> runBlocking<Boolean>(Dispatchers.IO) {
+                settingsRepo.getNotificationBirthdaysSnapshot()
+            }
+            else -> false
+        }
+    }
+
 }

@@ -27,4 +27,8 @@
     <string name="birth_date">Fecha de nacimiento (dd/MM/yyyy)</string>
     <string name="time_of_birth">Hora de nacimiento (HH:MM)</string>
     <string name="modify">Modificar</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="friendBirthdays">Cumpleaños de amigos</string>
+    <string name="yourDailyHoroscope">Tu horóscopo diario</string>
+    <string name="dark_mode">Modo oscuro</string>
 </resources>

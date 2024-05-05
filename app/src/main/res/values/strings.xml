@@ -37,4 +37,8 @@
     <string name="birth_date">Birth Date (dd/MM/yyyy)</string>
     <string name="time_of_birth">Time of Birth (HH:MM)</string>
     <string name="modify">Modify</string>
+    <string name="notifications">Notifications</string>
+    <string name="friendBirthdays">Friend birthdays</string>
+    <string name="yourDailyHoroscope">Your daily horoscope</string>
+    <string name="dark_mode">Dark mode</string>
 </resources>

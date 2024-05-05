@@ -18,7 +18,28 @@
         app:key="language_pref"
         app:title="@string/language"
         app:useSimpleSummaryProvider="true">
-
     </ListPreference>
+
+    <SwitchPreference
+        app:defaultValue="false"
+        app:key="dark_mode_pref"
+        app:title="@string/dark_mode"
+        />
+
+    <PreferenceCategory
+        app:title="@string/notifications">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="@string/yourDailyHoroscope"
+            app:key="notification_horoscope_pref"
+            />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="@string/friendBirthdays"
+            app:key="notification_birthdays_pref"
+            />
+    </PreferenceCategory>
+
+
 
 </androidx.preference.PreferenceScreen>
