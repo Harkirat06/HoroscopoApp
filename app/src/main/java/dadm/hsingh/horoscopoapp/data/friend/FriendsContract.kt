@@ -11,5 +11,7 @@ object FriendsContract {
         const val COLUMN_TIMEBIRTH = "timeBirth"
         const val COLUMN_PLACEBIRTH = "placeBirth"
         const val COLUMN_ZODIACSIGN = "zodiacSign"
+        const val COLUMN_DEFAULT_IMAGE = "defaultImage"
+        const val COLUMN_IMAGE_URI = "imageUri"
     }
 }

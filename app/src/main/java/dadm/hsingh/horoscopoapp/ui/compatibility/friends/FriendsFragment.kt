@@ -98,7 +98,6 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
             val timeBirth = generateRandomTime()
             val placeBirth = places.random()
             val zodiacSignImage = zodiacImages.random()
-            friendsList.add(Friend(id, name, dateBirth, timeBirth, placeBirth, zodiacSignImage))
         }
         return friendsList
     }

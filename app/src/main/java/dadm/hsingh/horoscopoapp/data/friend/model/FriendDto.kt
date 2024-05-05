@@ -18,6 +18,8 @@ data class FriendDto (
     @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_DATEBIRTH) val dateBirth: Date,
     @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_TIMEBIRTH) val timeBirth: Date,
     @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_PLACEBIRTH) val placeBirth: String,
-    @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_ZODIACSIGN) val zodiacSign: Int
+    @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_ZODIACSIGN) val zodiacSign: String,
+    @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_DEFAULT_IMAGE) val defaultImage: Int,
+    @ColumnInfo(name = FriendsContract.FriendsTable.COLUMN_IMAGE_URI) val imageUri: String?
     )
 

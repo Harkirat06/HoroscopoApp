@@ -20,7 +20,9 @@ fun FriendDto.toDomain(): Friend {
         dateBirth = dateBirthLocalDate,
         timeBirth = timeBirthLocalTime,
         placeBirth = this.placeBirth,
-        zodiacSign = this.zodiacSign
+        zodiacSign = this.zodiacSign,
+        defaultImage = this.defaultImage,
+        imageUri = this.imageUri
     )
 }
 fun Friend.toDatabaseDto(): FriendDto {
@@ -37,6 +39,8 @@ fun Friend.toDatabaseDto(): FriendDto {
         dateBirth = dateBirthDate,
         timeBirth = timeBirthDate,
         placeBirth = this.placeBirth,
-        zodiacSign = this.zodiacSign
+        zodiacSign = this.zodiacSign,
+        defaultImage = this.defaultImage,
+        imageUri = this.imageUri
     )
 }

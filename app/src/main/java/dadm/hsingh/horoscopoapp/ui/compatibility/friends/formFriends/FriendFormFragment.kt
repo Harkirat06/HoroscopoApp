@@ -1,13 +1,22 @@
 package dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -15,6 +24,7 @@ import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FormsFriendBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -29,9 +39,21 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
     private val viewModel: CompatibilityViewModel by activityViewModels()
 
+    val pickMedia = registerForActivityResult(PickVisualMedia()){uri->
+        if(uri!=null){
+            val flag = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            context?.contentResolver?.takePersistableUriPermission(uri, flag)
+            viewModel.setImageUri(uri.toString())
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FormsFriendBinding.bind(view)
+
+        binding.uploadBt.setOnClickListener{
+            pickMedia.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
+        }
 
         binding.buttonCancel.setOnClickListener {
             viewModel.resetFriend()
@@ -93,10 +115,21 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
                 binding.editTextName.text.toString(),
                 binding.birthDateInput.text.toString(),
                 binding.birthTimeInput.text.toString(),
-                binding.editTextPlaceBirth.text.toString()
+                binding.editTextPlaceBirth.text.toString(),
+                viewModel.image.value
             )
             viewModel.resetFriend()
             this.dismiss()
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.image.collect{uri ->
+                    if (uri != null) {
+                        binding.imageViewFriend.setImageURI(Uri.parse(uri))
+                    }
+                }
+            }
         }
 
     }
