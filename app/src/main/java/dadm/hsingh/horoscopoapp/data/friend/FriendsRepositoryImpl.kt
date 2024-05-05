@@ -27,11 +27,12 @@ class FriendsRepositoryImpl@Inject constructor(
         return dataSource.getFriendById(id).map { it?.toDomain() }
     }
 
-    override fun getFriendByName(name: String): Flow<List<Friend>> {
-        return dataSource.getAllFriend().map { list -> list.map { it.toDomain() } }
-    }
-
     override suspend fun deleteAllFriend() {
         dataSource.deleteAllFriend()
     }
+
+    override suspend fun updateFriend(friend: Friend) {
+        dataSource.updateFriend(friend.toDatabaseDto())
+    }
+
 }

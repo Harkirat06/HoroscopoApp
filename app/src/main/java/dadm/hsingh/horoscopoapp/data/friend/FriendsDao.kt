@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import dadm.hsingh.horoscopoapp.data.friend.model.FriendDto
 import kotlinx.coroutines.flow.Flow
 
@@ -22,9 +23,8 @@ interface FriendsDao {
     @Query("SELECT * FROM ${FriendsContract.FriendsTable.TABLE_NAME} WHERE ${FriendsContract.FriendsTable.COLUMN_ID} = :id")
     fun getFriendById(id: String): Flow<FriendDto?>
 
-    @Query("SELECT * FROM ${FriendsContract.FriendsTable.TABLE_NAME} WHERE ${FriendsContract.FriendsTable.COLUMN_ID} = :name")
-    fun getFriendByName(name: String): Flow<List<FriendDto>>
-
     @Query("DELETE FROM ${FriendsContract.FriendsTable.TABLE_NAME}")
     suspend fun deleteAllFriends()
+    @Update
+    suspend fun updateFriend(friend: FriendDto)
 }

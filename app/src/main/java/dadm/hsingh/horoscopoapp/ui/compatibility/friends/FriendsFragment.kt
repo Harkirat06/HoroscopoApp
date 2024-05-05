@@ -5,11 +5,17 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentFriendsBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
+import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
 import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormFragment
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
 import java.util.Locale
@@ -18,19 +24,14 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
     private var _binding : FragmentFriendsBinding? = null
     private val binding get() = _binding!!
 
-    private val list = generateRandomFriendsList(20)
-
-
-
+    private val viewModel: CompatibilityViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFriendsBinding.bind(view)
 
-        val adapter = FriendsListAdapter(::onItemClick)
+        val adapter = FriendsListAdapter(::onEditClick, ::onDeleteClick)
         binding.textView.adapter = adapter
-
-        adapter.submitList(list)
 
         binding.addFriend.setOnClickListener {
             FriendFormFragment().show(childFragmentManager, "")
@@ -38,28 +39,32 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Para implementar mas tarde
+                viewModel.setSearchQuery(query ?: "")
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Para implementar mas tarde
+                viewModel.setSearchQuery(newText ?: "")
                 return true
             }
-
         })
 
-
-
-
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.filteredFriends.collect { filteredList ->
+                    adapter.submitList(filteredList)
+                }
+            }
+        }
     }
 
+    private fun onEditClick(friend: Friend) {
+        viewModel.setFriend(friend)
+        FriendFormFragment().show(childFragmentManager, "")
+    }
 
-
-
-
-    private fun onItemClick(s: String) {
-
+    private fun onDeleteClick(friend: Friend){
+        viewModel.removeFriend(friend)
     }
 
     override fun onDestroyView() {

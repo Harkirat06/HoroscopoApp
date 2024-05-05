@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HoroscopoApp</string>
+    <string name="next">Siguiente</string>
+    <string name="finish">Finalizar</string>
+    <string name="zodiac_connection">Conexión zodiacal</string>
+    <string name="calculate">Calcular</string>
+    <string name="profile">Perfil</string>
+    <string name="about">Acerca de</string>
+    <string name="user_information">Información de usuario</string>
+    <string name="username">Alias</string>
+    <string name="gender">Género</string>
+    <string name="age">Edad</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="mobile_phone">Teléfono móvil</string>
+    <string name="email">Correo</string>
+    <string name="buscar">Buscar</string>
+    <string name="search_friend">Buscar amigo ...</string>
+    <string name="weekly_ranking">Ranking mensual</string>
+    <string name="add">Añadir</string>
+    <string name="cancel">Cancelar</string>
     <string name="language">Idioma</string>
     <string name="english_language">Inglés</string>
     <string name="spanish_language">Español</string>
     <string name="your_name">Tu nombre</string>
     <string name="your_name_hint">El nombre por el cual prefieres que te llamen</string>
+    <string name="birth_date">Fecha de nacimiento (dd/MM/yyyy)</string>
+    <string name="time_of_birth">Hora de nacimiento (HH:MM)</string>
+    <string name="modify">Modificar</string>
 </resources>

@@ -21,12 +21,13 @@ class FriendsDataSourceImpl @Inject constructor(private val friendsDao: FriendsD
         return friendsDao.getFriendById(id)
     }
 
-    override fun getFriendByName(name: String): Flow<List<FriendDto>> {
-        return friendsDao.getFriendByName(name)
-    }
-
     override suspend fun deleteAllFriend() {
         friendsDao.deleteAllFriends()
     }
+
+    override suspend fun updateFriend(friend: FriendDto) {
+        friendsDao.updateFriend(friend)
+    }
+
 
 }

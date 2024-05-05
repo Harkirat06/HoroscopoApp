@@ -5,34 +5,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import dadm.hsingh.horoscopoapp.databinding.FriendItemBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
+import java.time.format.DateTimeFormatter
 
-class FriendsListAdapter(private val onItemClick: (String) -> Unit) : ListAdapter<Friend, FriendsListAdapter.ViewHolder>(FriendDiff){
+class FriendsListAdapter(val onEditClick: (Friend) -> Unit, val onDeleteClick: (Friend) -> Unit) : ListAdapter<Friend, FriendsListAdapter.ViewHolder>(FriendDiff){
 
-    class ViewHolder(val onItemClick: (String) -> Unit, private val binding: FriendItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val onEditClick: (Friend) -> Unit, val onDeleteClick: (Friend) -> Unit, private val binding: FriendItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(friend: Friend){
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             binding.nameItem.text = friend.name
-            binding.dateBirthItem.text = friend.dateBirth.toString()
+            binding.dateBirthItem.text = friend.dateBirth.format(formatter).toString()
             binding.placeBirthItem.text = friend.placeBirth
             binding.userPhoto.setImageResource(friend.zodiacSign)
-        }
-
-        init {
-            /*
-            binding.root.setOnClickListener {
-                onItemClick(binding.authorItem.text.toString())
-            }
-
-             */
+            binding.editButton.setOnClickListener { onEditClick(friend) }
+            binding.deleteButton.setOnClickListener { onDeleteClick(friend) }
         }
     }
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(onItemClick, FriendItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(onEditClick, onDeleteClick, FriendItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
