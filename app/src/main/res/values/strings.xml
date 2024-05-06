@@ -45,4 +45,6 @@
     <string name="notification_channel_description">Horoscope notifications channel</string>
     <string name="reminder">Reminder</string>
     <string name="reminderContent">Good morning! Remember to read your horoscope today.</string>
+    <string name="hay_cumple">It\'s someone\'s birthday!</string>
+    <string name="recuerda_felicitar">Remember to congratulate</string>
 </resources>

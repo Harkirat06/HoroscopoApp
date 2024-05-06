@@ -1,6 +1,7 @@
 package dadm.hsingh.horoscopoapp.utils
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlarmManager
 import android.app.IntentService
 import android.app.NotificationChannel
@@ -18,6 +19,7 @@ import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.startActivity
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.ui.MainActivity
 
@@ -42,7 +44,7 @@ fun createNotificationChannel(context: Context) {
         nm.createNotificationChannel(channel)
 }
 
-fun generateNotification(context: Context?) {
+fun generateNotificationReminder(context: Context?) {
     if (context == null) return
     val channelId = CHANEL_ID
     val largeIcon = BitmapFactory.decodeResource( // (2)
@@ -61,6 +63,51 @@ fun generateNotification(context: Context?) {
         .setSmallIcon(R.drawable.estrella_flor) // (5)
         .setContentTitle(context.getString(R.string.reminder)) // (6)
         .setContentText(context.getString(R.string.reminderContent)) // (7)
+        .setContentIntent(pendingIntent)
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT) // (9)
+        .build()
+
+    with(NotificationManagerCompat.from(context)) {
+        if (ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return@with
+        }
+        notify(NOTIFICATION_ID, notification)
+    }
+}
+
+
+fun generateNotificationBirthday(context: Context?, friendName: String) {
+    if (context == null) return
+    val channelId = CHANEL_ID
+    val contentTitle = context.getString(R.string.hay_cumple)
+    val contextText = context.getString(R.string.recuerda_felicitar) + " " + friendName + "."
+    val largeIcon = BitmapFactory.decodeResource( // (2)
+        context.resources,
+        R.drawable.estrella_flor
+    )
+
+    val intent = Intent(context, MainActivity::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+    val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+
+    val notification = NotificationCompat.Builder(context, channelId) // (3)
+        .setLargeIcon(largeIcon) // (4)
+        .setSmallIcon(R.drawable.estrella_flor) // (5)
+        .setContentTitle(contentTitle) // (6)
+        .setContentText(contextText) // (7)
         .setContentIntent(pendingIntent)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT) // (9)
         .build()

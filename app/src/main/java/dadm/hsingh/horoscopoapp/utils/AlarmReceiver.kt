@@ -8,30 +8,26 @@ import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 private const val NOTIFICACCION = "RECORDATORIO_HOROSCOPO"
-private const val HORA_RECORDATORIO_ID = "HORA_RECORDATORIO"
+private const val CUMPLEACCION = "RECORDATORIO_CUMPLEAÑOS"
+private const val EXTRA_BIRTHDAY_NAME = "BIRTHDAY_NAME"
 
 class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val timeInMillis = intent.getLongExtra(HORA_RECORDATORIO_ID, 0L)
 
         when (intent.action) {
             NOTIFICACCION -> {
-                setRepetitiveAlarm(AlarmService(context))
-                generateNotification(context)
+                generateNotificationReminder(context)
+            }
+            CUMPLEACCION -> {
+                val name = intent.getStringExtra(EXTRA_BIRTHDAY_NAME)?:"???"
+                generateNotificationBirthday(context, name)
+
+                val alarmService = AlarmService(context)
+                val nextBirthday = Calendar.getInstance()
+                nextBirthday.add(Calendar.YEAR, 1)
+                alarmService.setBirthdayAlarm(nextBirthday.timeInMillis, name)
             }
         }
     }
-
-
-    private fun setRepetitiveAlarm(alarmService: AlarmService) {
-        val cal = Calendar.getInstance().apply {
-            this.timeInMillis += TimeUnit.DAYS.toMillis(1)
-            // Timber.d("Set alarm for next week same time - ${convertDate(this.timeInMillis)}")
-        }
-        alarmService.setRepetitiveAlarm(cal.timeInMillis)
-    }
-
-    private fun convertDate(timeInMillis: Long): String =
-        DateFormat.format("dd/MM/yyyy hh:mm:ss", timeInMillis).toString()
 
 }

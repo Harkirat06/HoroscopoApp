@@ -1,12 +1,17 @@
 package dadm.hsingh.horoscopoapp.ui
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -22,6 +27,7 @@ import dadm.hsingh.horoscopoapp.utils.AlarmService
 import dadm.hsingh.horoscopoapp.utils.createNotificationChannel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -82,7 +88,47 @@ class MainActivity : AppCompatActivity() {
         // Crear canal de notificación
         createNotificationChannel(this)
         alarmService = AlarmService(this)
-        alarmService.setRepetitiveAlarm(TimeUnit.HOURS.toMillis(1) + TimeUnit.MINUTES.toMillis(8))
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS),0 )
+            }
+        }
+        val time = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, 3)
+            set(Calendar.MINUTE, 3)
+            set(Calendar.SECOND, 0)
+        }
+
+        val birthday = Calendar.getInstance().apply {// AQQUÍ TENGO QUE PONER EL TIEMPO DEL CUMPLEAÑOS
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, 3)
+            set(Calendar.MINUTE, 3)
+            set(Calendar.SECOND, 0)
+        }
+        val thisYear = Calendar.getInstance()
+        thisYear.set(Calendar.DAY_OF_YEAR, 1)
+        thisYear.set(Calendar.HOUR_OF_DAY, 0)
+        thisYear.set(Calendar.MINUTE, 0)
+        thisYear.set(Calendar.SECOND, 0)
+        thisYear.set(Calendar.MILLISECOND, 0)
+        val nextBirthday = thisYear.timeInMillis + birthday.timeInMillis
+
+        alarmService.setReminderAlarm(time.timeInMillis)
+        alarmService.setBirthdayAlarm(nextBirthday, "Paco")
+        // alarmService.setInmediateAlarm()
     }
 
     // Soporte a la flecha hacia atrás en los Settings
