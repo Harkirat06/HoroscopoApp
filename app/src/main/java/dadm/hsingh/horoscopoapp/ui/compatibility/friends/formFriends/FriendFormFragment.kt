@@ -1,17 +1,26 @@
 package dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends
 
-import android.app.Activity
 import android.content.Intent
+import android.Manifest
+import android.content.ContentValues
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.*
+import androidx.camera.core.ImageCapture
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -29,6 +38,7 @@ import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
+import java.util.concurrent.ExecutorService
 
 class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
@@ -38,6 +48,21 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
 
     private val viewModel: CompatibilityViewModel by activityViewModels()
+
+    val requestPermissionLauncher = registerForActivityResult(
+        RequestMultiplePermissions()
+    ) { result ->
+        var allGranted = true
+        for(isGranted in result.values){
+            allGranted = allGranted && isGranted
+        }
+        if(allGranted){
+            Toast.makeText(context, "All permission granted", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(context, "All or some permissions are denied", Toast.LENGTH_LONG).show()
+
+        }
+    }
 
     private val pickMedia = registerForActivityResult(PickVisualMedia()){ uri->
         if(uri!=null){
@@ -53,6 +78,12 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
         binding.uploadBt.setOnClickListener{
             pickMedia.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
+        }
+
+        binding.cameraBt.setOnClickListener{
+            if (!allPermissionsGranted()){
+                requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+            }
         }
 
         binding.buttonCancel.setOnClickListener {
@@ -134,8 +165,13 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         }
 
     }
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        checkSelfPermission(
+            requireContext(), it
+        ) == PackageManager.PERMISSION_GRANTED
+    }
 
-    override fun onStart() {
+        override fun onStart() {
         super.onStart()
         // Cambiar el tamaño del diálogo
         dialog?.window?.setLayout(
@@ -146,8 +182,19 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         dialog?.window?.setBackgroundDrawable(transparentDrawable)
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    companion object {
+        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val REQUEST_CODE_PERMISSIONS = 10
+        private val REQUIRED_PERMISSIONS = mutableListOf(
+            Manifest.permission.CAMERA).apply {
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }.toTypedArray()
     }
 }
