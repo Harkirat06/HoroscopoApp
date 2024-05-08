@@ -5,8 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentDescriptionBinding
-import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
-import dadm.hsingh.horoscopoapp.databinding.FragmentUserInfoBinding
 
 class userDescriptionFragment : Fragment(R.layout.fragment_description){
 

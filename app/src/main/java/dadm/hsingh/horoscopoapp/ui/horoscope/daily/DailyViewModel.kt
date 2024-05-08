@@ -1,6 +1,5 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope.daily
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeRepository

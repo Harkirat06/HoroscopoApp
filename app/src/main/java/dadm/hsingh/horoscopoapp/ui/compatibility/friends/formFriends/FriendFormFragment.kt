@@ -1,8 +1,8 @@
 package dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends
 
-import android.content.Intent
 import android.Manifest
-import android.content.ContentValues
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,16 +11,18 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts.*
-import androidx.camera.core.ImageCapture
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia
+import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -34,11 +36,11 @@ import dadm.hsingh.horoscopoapp.databinding.FormsFriendBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
 import kotlinx.coroutines.launch
+import java.io.File
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
-import java.util.concurrent.ExecutorService
 
 class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
@@ -49,7 +51,55 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
 
     private val viewModel: CompatibilityViewModel by activityViewModels()
 
-    val requestPermissionLauncher = registerForActivityResult(
+    private var filename: String? = null
+    private lateinit var launcher: ActivityResultLauncher<Intent>
+
+    private fun initLauncher() {
+        launcher = registerForActivityResult(StartActivityForResult()) {
+            try {
+                if (it != null && it.resultCode == Activity.RESULT_OK) {
+                    caseCapture()
+                }
+            } catch (e: Exception) {
+                Log.e("ERR", e.toString())
+            }
+        }
+    }
+    private fun caseCapture() {
+        filename.let {
+            if (it != null) {
+                val tempFile = File(it)
+                viewModel.setImageUri(tempFile.toUri().toString())
+            }
+        }
+    }
+    private fun takePicture() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        val image = createTempFile()
+
+        val uri = FileProvider.getUriForFile(
+            requireActivity(),
+            "dadm.hsingh.horoscopoapp.provider",
+            image
+        )
+
+        filename = image.absolutePath.replace("/storage/emulated/0", "sdcard")
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+
+        launcher.launch(intent)
+    }
+    private fun createTempFile(): File {
+        val tempDir = File("${requireActivity().externalMediaDirs.first()}/Pictures")
+
+        if (!tempDir.exists()) {
+            tempDir.mkdirs()
+        }
+
+        return File.createTempFile("capture_", ".png", tempDir)
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
         RequestMultiplePermissions()
     ) { result ->
         var allGranted = true
@@ -75,6 +125,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FormsFriendBinding.bind(view)
+        initLauncher()
 
         binding.uploadBt.setOnClickListener{
             pickMedia.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
@@ -83,6 +134,12 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         binding.cameraBt.setOnClickListener{
             if (!allPermissionsGranted()){
                 requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+                if(allPermissionsGranted()){
+                    takePicture()
+                }
+            }else{
+                Log.d("HOLAAAA", "FORMAT")
+                takePicture()
             }
         }
 
@@ -140,8 +197,6 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
             binding.birthTimeInput.text = Editable.Factory.getInstance().newEditable(formattedTime)
         }
 
-
-
         binding.buttonAddFriend.setOnClickListener {
             viewModel.addToFavourites(
                 binding.editTextName.text.toString(),
@@ -165,13 +220,15 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         }
 
     }
+
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         checkSelfPermission(
             requireContext(), it
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-        override fun onStart() {
+    override fun onStart() {
         super.onStart()
         // Cambiar el tamaño del diálogo
         dialog?.window?.setLayout(
@@ -181,7 +238,6 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         val transparentDrawable = ColorDrawable(Color.TRANSPARENT)
         dialog?.window?.setBackgroundDrawable(transparentDrawable)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

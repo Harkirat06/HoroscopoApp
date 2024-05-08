@@ -3,7 +3,6 @@ package dadm.hsingh.horoscopoapp.data.friend.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import dadm.hsingh.horoscopoapp.data.friend.FriendsContract
 import dadm.hsingh.horoscopoapp.utils.DateConverter

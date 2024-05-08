@@ -1,8 +1,17 @@
 package dadm.hsingh.horoscopoapp.di
 
-import dadm.hsingh.horoscopoapp.data.horoscope.daily.*
-import dadm.hsingh.horoscopoapp.data.horoscope.monthly.*
-import dadm.hsingh.horoscopoapp.data.horoscope.weekly.*
+import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeDataSource
+import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeDataSourceImpl
+import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeRepository
+import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeRepositoryImpl
+import dadm.hsingh.horoscopoapp.data.horoscope.monthly.MonthlyHoroscopeDataSource
+import dadm.hsingh.horoscopoapp.data.horoscope.monthly.MonthlyHoroscopeDataSourceImpl
+import dadm.hsingh.horoscopoapp.data.horoscope.monthly.MonthlyHoroscopeRepository
+import dadm.hsingh.horoscopoapp.data.horoscope.monthly.MonthlyHoroscopeRepositoryImpl
+import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeDataSource
+import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeDataSourceImpl
+import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepository
+import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
