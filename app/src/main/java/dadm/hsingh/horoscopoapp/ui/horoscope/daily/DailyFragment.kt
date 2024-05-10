@@ -8,6 +8,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.Snackbar
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentDailyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,13 +29,29 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDailyBinding.bind(view)
 
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.SPANISH)
+            .build()
+
+        val englishSpanishTranslator = Translation.getClient(options)
+        lifecycle.addObserver(englishSpanishTranslator)
         viewModel.getDailyHoroscope()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.dailyHoroscope.collect{dailyHoroscope ->
                     if (dailyHoroscope != null) {
-                        binding.textViewParagraph.text = dailyHoroscope.dailyHoroscopeText
+                        englishSpanishTranslator.translate(dailyHoroscope.dailyHoroscopeText)
+                            .addOnSuccessListener { translatedText ->
+                                // Translation successful.
+                                binding.textViewParagraph.text = translatedText
+                            }
+                            .addOnFailureListener { exception ->
+                                // Error.
+                                // ...
+                            }
+
                     }
                 }
             }
