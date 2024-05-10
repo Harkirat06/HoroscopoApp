@@ -162,5 +162,8 @@ class CompatibilityViewModel @Inject constructor(
     fun setImageUri(uri : String){
         _image.value = uri
     }
+    fun resetImageUri(){
+        _image.value = null
+    }
 }
 
