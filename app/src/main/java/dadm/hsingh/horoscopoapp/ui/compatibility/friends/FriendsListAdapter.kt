@@ -10,7 +10,7 @@ import dadm.hsingh.horoscopoapp.databinding.FriendItemBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import java.time.format.DateTimeFormatter
 
-class FriendsListAdapter(val onEditClick: (Friend) -> Unit, val onDeleteClick: (Friend) -> Unit) : ListAdapter<Friend, FriendsListAdapter.ViewHolder>(FriendDiff){
+class FriendsListAdapter(val onEditClick: (Friend) -> Unit = {}, val onDeleteClick: (Friend) -> Unit = {}) : ListAdapter<Friend, FriendsListAdapter.ViewHolder>(FriendDiff){
 
     class ViewHolder(val onEditClick: (Friend) -> Unit, val onDeleteClick: (Friend) -> Unit, private val binding: FriendItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(friend: Friend){

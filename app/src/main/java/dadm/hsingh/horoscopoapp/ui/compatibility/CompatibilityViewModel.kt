@@ -40,6 +40,18 @@ class CompatibilityViewModel @Inject constructor(
     private val _image = MutableStateFlow<String?>(null)
     val image = _image.asStateFlow()
 
+    val allFriends = rep.getAllFriend().stateIn(
+        scope = viewModelScope,
+        initialValue = listOf(),
+        started = SharingStarted.WhileSubscribed()
+    )
+
+    private val _firstFriend = MutableStateFlow<Friend?>(null)
+    val firstFriend = _firstFriend.asStateFlow()
+
+    private val _secondFriend = MutableStateFlow<Friend?>(null)
+    val secondFriend = _secondFriend.asStateFlow()
+
     @OptIn(ExperimentalCoroutinesApi::class)
     val filteredFriends = searchQuery
         .flatMapLatest { query ->
@@ -58,6 +70,27 @@ class CompatibilityViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(),
             initialValue = listOf()
         )
+
+    public fun getFriendNames(): List<String>{
+        val listFriends = allFriends.value.map {
+            it.name
+        }
+        return listFriends
+    }
+
+    public fun setFirstFriend(name : String){
+        val temp = allFriends.value.first {
+            it.name == name
+        }
+        _firstFriend.value = temp
+    }
+
+    public fun setSecondFriend(name : String){
+        val temp = allFriends.value.first {
+            it.name == name
+        }
+        _secondFriend.value = temp
+    }
 
     public fun addToFavourites(name: String, dateBirth: String, timeBirth: String, placeBirth: String, uri : String?){
 
