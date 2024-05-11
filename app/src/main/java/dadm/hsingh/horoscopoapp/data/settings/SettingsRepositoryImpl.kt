@@ -1,16 +1,26 @@
 package dadm.hsingh.horoscopoapp.data.settings
 
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SettingsRepositoryImpl
-@Inject constructor(private val dataSource: SettingsDataSource)
+@Inject constructor(private val dataSource: SettingsDataSource,
+    private val friendsRepo: FriendsRepository)
     : SettingsRepository
 {
     // NAME
     override fun getYourName(): Flow<String> = dataSource.getYourName()
 
-    override suspend fun getYourNameSnapshot(): String = dataSource.getYourNameSnapshot()
+    override suspend fun getYourNameSnapshot(): String {
+        var yourName = dataSource.getYourNameSnapshot()
+        if (yourName.isBlank()) {
+            val nameInDB = friendsRepo.getFriendById("USUARIO").toString()// no es exactamente así
+            setYourName(nameInDB)
+            yourName = dataSource.getYourNameSnapshot()
+        }
+        return yourName
+    }
 
     override suspend fun setYourName(userName: String) {
         dataSource.setYourName(userName)
