@@ -45,6 +45,7 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
                         viewModel.getLanguage()
                         viewModel.language.collect{language->
                             if(language.isNotEmpty()){
+                                binding.textViewPeriod.text = viewModel.getDate()
                                 if(language == "es"){
                                     englishSpanishTranslator.translate(weeklyHoroscope.weeklyHoroscopeText)
                                         .addOnSuccessListener { translatedText ->

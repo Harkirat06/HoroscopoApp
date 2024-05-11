@@ -9,7 +9,7 @@
         android:id="@+id/textViewTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="April 23, 2024"
+        android:text=""
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"

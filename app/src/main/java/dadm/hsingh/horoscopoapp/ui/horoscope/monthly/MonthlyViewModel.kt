@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -43,5 +46,11 @@ class MonthlyViewModel @Inject() constructor(
                 }
             }
         }
+    }
+    fun getDate() : String{
+        val locale = if (language.value == "en") Locale.ENGLISH else Locale("es", "ES")
+        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", locale)
+        val date = dateFormat.format(Date())
+        return date.substring(0, 1).uppercase(Locale.getDefault()) + date.substring(1)
     }
 }

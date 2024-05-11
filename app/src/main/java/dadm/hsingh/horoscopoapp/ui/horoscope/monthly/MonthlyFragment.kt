@@ -34,7 +34,6 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
 
         val englishSpanishTranslator = Translation.getClient(options)
         lifecycle.addObserver(englishSpanishTranslator)
-
         viewModel.getMonthlyHoroscope()
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -44,6 +43,7 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
                         viewModel.getLanguage()
                         viewModel.language.collect { language ->
                             if (language.isNotEmpty()) {
+                                binding.textViewMonthlyTitle.text = viewModel.getDate()
                                 if (language == "es") {
                                     englishSpanishTranslator.translate(monthlyHoroscope.monthlyHoroscopeText)
                                         .addOnSuccessListener { translatedText ->
