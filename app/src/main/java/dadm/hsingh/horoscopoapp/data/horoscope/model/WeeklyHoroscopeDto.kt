@@ -1,8 +1,11 @@
 package dadm.hsingh.horoscopoapp.data.horoscope.model
 
+import android.util.Log
+import androidx.compose.ui.text.toUpperCase
 import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.WeeklyHoroscope
 import java.time.LocalDate
+import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
@@ -14,11 +17,14 @@ data class WeeklyHoroscopeDto(
 ) {
     fun toDomain(): WeeklyHoroscope {
         val parts = data.week.split(" - ")
-        val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy")
+
 
         try {
-            val startDate = LocalDate.parse(parts[0].trim(), formatter)
-            val endDate = LocalDate.parse(parts[1].trim(), formatter)
+            //Primera fecha
+            val startDate = stringToLocalDate(parts[0])
+
+            //Segunda fecha
+            val endDate = stringToLocalDate(parts[1])
 
             return WeeklyHoroscope(
                 weeklyHoroscopeText = data.horoscope_data,
@@ -27,7 +33,7 @@ data class WeeklyHoroscopeDto(
                 endDate = endDate
             )
         } catch (e: DateTimeParseException) {
-            println("Error al parsear la fecha: ${e.message}")
+            e.message?.let { Log.e("Error al formatear fecha", it) }
         }
 
         return WeeklyHoroscope(
@@ -36,6 +42,15 @@ data class WeeklyHoroscopeDto(
             startingDate = LocalDate.now(),
             endDate = LocalDate.now()
         )
+    }
+
+    fun stringToLocalDate(string: String): LocalDate{
+        //Recibimos la fecha con forma "MMM dd, AAAA"
+        val split = string.split(" ")
+        val month: Month = Month.valueOf(split[0].uppercase())
+        val day: Int = split[1].dropLast(1).toInt()
+        val year: Int = split[2].toInt()
+        return LocalDate.of(year, month, day)
     }
 }
 

@@ -4,22 +4,19 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
-import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
-import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSignImage
 import dadm.hsingh.horoscopoapp.domain.model.Friend
+import dadm.hsingh.horoscopoapp.utils.getZodiacSign
+import dadm.hsingh.horoscopoapp.utils.getZodiacSignImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZoneOffset
 import java.util.Date
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(

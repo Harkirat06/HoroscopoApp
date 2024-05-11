@@ -64,6 +64,23 @@ class MainActivity : AppCompatActivity() {
                 // ...
             }
 
+        val options2 = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.SPANISH)
+            .setTargetLanguage(TranslateLanguage.ENGLISH)
+            .build()
+        val spanishEnglishTranslator = Translation.getClient(options2)
+        lifecycle.addObserver(spanishEnglishTranslator)
+
+        spanishEnglishTranslator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                // Model downloaded successfully. Okay to start translating.
+                // (Set a flag, unhide the translation UI, etc.)
+            }
+            .addOnFailureListener { exception ->
+                // Model couldn’t be downloaded or other internal error.
+                // ...
+            }
+
 
 
         val binding = ActivityMainBinding.inflate(layoutInflater)

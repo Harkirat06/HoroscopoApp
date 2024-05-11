@@ -1,7 +1,9 @@
 package dadm.hsingh.horoscopoapp.data.horoscope.model
 
+import android.util.Log
 import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.MonthlyHoroscope
+import java.time.Month
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
@@ -13,18 +15,17 @@ data class MonthlyHoroscopeDto(
     val success: Boolean
 ) {
     fun toDomain(): MonthlyHoroscope {
-        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-        var yearMonth = YearMonth.now()
-
+        val month = -1
+        val year = -1
         try {
-            yearMonth = YearMonth.parse(data.month, formatter)
-        } catch (e: DateTimeParseException) {
+            val month = Month.valueOf(data.month.split(" ")[0].uppercase())
+            val year = data.month.split(" ")[1].toInt()
+
+            Log.d("mes formateado", month.toString())
+            Log.d("año formateado", year.toString())
+        } catch (e: Exception) {
             println("Error al parsear la fecha: ${e.message}")
         }
-
-        // Obtener el mes y el año por separado
-        val month = yearMonth.monthValue
-        val year = yearMonth.year
 
         val standoutDaysList = data.standout_days.split(",").map { it.trim().toInt() }
         val challengingDaysList = data.standout_days.split(",").map { it.trim().toInt() }
