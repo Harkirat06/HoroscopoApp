@@ -2,6 +2,7 @@ package dadm.hsingh.horoscopoapp.data.settings
 
 import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class SettingsRepositoryImpl
@@ -15,9 +16,10 @@ class SettingsRepositoryImpl
     override suspend fun getYourNameSnapshot(): String {
         var yourName = dataSource.getYourNameSnapshot()
         if (yourName.isBlank()) {
-            val nameInDB = friendsRepo.getFriendById("USUARIO").toString()// no es exactamente así
-            setYourName(nameInDB)
-            yourName = dataSource.getYourNameSnapshot()
+            val userInDBFlow = friendsRepo.getFriendById("USUARIO")
+            var userInDBName = userInDBFlow.first()?.name?:"Error al obtener el nombre"
+            setYourName(userInDBName)
+            yourName = userInDBName
         }
         return yourName
     }
