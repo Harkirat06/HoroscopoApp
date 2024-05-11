@@ -85,7 +85,7 @@
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:text="Del 31 de jul al 06 de Agosto"
+                            android:text="@string/loading"
                             android:textColor="@android:color/white"
                             android:textStyle="bold"
                             android:gravity="center"

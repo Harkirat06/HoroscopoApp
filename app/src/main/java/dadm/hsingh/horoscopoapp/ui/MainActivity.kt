@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity() {
         if (isFirstRun) {
             val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //Testear
