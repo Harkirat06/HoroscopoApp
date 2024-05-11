@@ -19,5 +19,17 @@ class SettingsViewModel @Inject() constructor(
         started = SharingStarted.WhileSubscribed()
     )
 
+    val notificationReminder = settingsRepo.getNotificationHoroscope().stateIn(
+        scope = viewModelScope,
+        initialValue = false,
+        started = SharingStarted.WhileSubscribed()
+    )
+
+    val notificationBirthdays = settingsRepo.getNotificationBirthdays().stateIn(
+        scope = viewModelScope,
+        initialValue = false,
+        started = SharingStarted.WhileSubscribed()
+    )
+
 
 }

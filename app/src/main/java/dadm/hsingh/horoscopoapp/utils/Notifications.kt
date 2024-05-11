@@ -3,6 +3,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlarmManager
+import android.app.AlarmManager.INTERVAL_DAY
 import android.app.IntentService
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -14,6 +15,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
@@ -22,12 +24,17 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.startActivity
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.ui.MainActivity
+import java.util.Calendar
 
 private val CHANEL_ID = "HOROSCOTIFICACION"
 private val NOTIFICATION_ID = 856
 
+private const val NOTIFICACCION = "RECORDATORIO_HOROSCOPO"
+private const val CUMPLEACCION = "RECORDATORIO_CUMPLEAÑOS"
+private const val EXTRA_BIRTHDAY_NAME = "BIRTHDAY_NAME"
 
 
+// --------- NOTIFICACIONES ---------
 
 fun createNotificationChannel(context: Context) {
         val name = context.getString(R.string.notification_channel_name)
@@ -73,19 +80,11 @@ fun generateNotificationReminder(context: Context?) {
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return@with
         }
         notify(NOTIFICATION_ID, notification)
     }
 }
-
 
 fun generateNotificationBirthday(context: Context?, friendName: String) {
     if (context == null) return
@@ -118,15 +117,94 @@ fun generateNotificationBirthday(context: Context?, friendName: String) {
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return@with
         }
         notify(NOTIFICATION_ID, notification)
     }
+}
+
+
+
+// --------- ALARMAS ---------
+
+class AlarmReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        when (intent.action) {
+            NOTIFICACCION -> {
+                generateNotificationReminder(context)
+            }
+            CUMPLEACCION -> {
+                val name = intent.getStringExtra(EXTRA_BIRTHDAY_NAME)?:"???"
+                generateNotificationBirthday(context, name)
+
+                val alarmService = AlarmService(context)
+                val nextBirthday = Calendar.getInstance()
+                nextBirthday.add(Calendar.YEAR, 1)
+                alarmService.setNextBirthdayAlarm(nextBirthday.timeInMillis, name)
+            }
+        }
+    }
+}
+
+
+class AlarmService (private val context : Context) {
+
+    private val alarmManager: AlarmManager? =
+        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
+    private var birthdayAlarmNumber = 1
+
+
+    // Programa una alarma diaria a las 9:00h
+    fun setReminderAlarm() {
+        val time = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, 9)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+        }
+        val alarmIntent = Intent(context, AlarmReceiver::class.java).apply {
+            action = NOTIFICACCION
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE )
+        alarmManager?.let {
+            alarmManager.setInexactRepeating(
+                AlarmManager.RTC_WAKEUP,
+                time.timeInMillis,
+                INTERVAL_DAY,
+                pendingIntent
+            )
+        }
+    }
+
+    fun setBirthdayAlarm(birthDayInMillis : Long, birthdayName: String) {
+    }
+
+    fun setNextBirthdayAlarm(nextBirthDayInMillis : Long, birthdayName: String) {
+        val alarmIntent = Intent(context, AlarmReceiver::class.java).apply {
+            action = CUMPLEACCION
+            putExtra(EXTRA_BIRTHDAY_NAME, birthdayName)
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, birthdayAlarmNumber, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE )
+        birthdayAlarmNumber++
+        alarmManager?.let {
+            alarmManager.set(
+                AlarmManager.RTC_WAKEUP,
+                nextBirthDayInMillis,
+                pendingIntent
+            )
+        }
+    }
+
+    fun cancelAlarms() {
+        val alarmIntent = Intent(context, AlarmReceiver::class.java).apply {
+            action = NOTIFICACCION
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE )
+        alarmManager?.cancel(pendingIntent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            alarmManager?.cancelAll()
+        }
+    }
+
+
 }
