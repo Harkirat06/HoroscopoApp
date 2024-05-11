@@ -74,13 +74,13 @@
 
 
     <LinearLayout
-        android:id="@+id/editTextDateBirth"
+        android:id="@+id/editDateBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        app:layout_constraintBottom_toTopOf="@id/editTextTimeBirth"
+        app:layout_constraintBottom_toTopOf="@id/editTimeBirth"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -106,12 +106,12 @@
 
 
     <LinearLayout
-        android:id="@+id/editTextTimeBirth"
+        android:id="@+id/editTimeBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateBirth"
+        app:layout_constraintTop_toBottomOf="@+id/editDateBirth"
         app:layout_constraintBottom_toTopOf="@id/editTextPlaceBirth"
         >
 
@@ -149,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttons"
-        app:layout_constraintTop_toBottomOf="@id/editTextTimeBirth"
+        app:layout_constraintTop_toBottomOf="@id/editTimeBirth"
         />
 
 
