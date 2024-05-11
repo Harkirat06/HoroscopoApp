@@ -1,11 +1,9 @@
 package dadm.hsingh.horoscopoapp.data.ranking
 
-import dadm.hsingh.horoscopoapp.data.horoscope.model.DailyHoroscopeDto
-import dadm.hsingh.horoscopoapp.data.ranking.model.RankingDto
-import retrofit2.Response
+import dadm.hsingh.horoscopoapp.domain.model.Ranking
 
 interface RankingDataSource {
 
-    suspend fun getRanking(): Result<RankingDto>
+    suspend fun getRanking(): Result<Ranking>
 
 }

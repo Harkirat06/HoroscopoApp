@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
-import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
-import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSignImage
+import dadm.hsingh.horoscopoapp.utils.getZodiacSign
+import dadm.hsingh.horoscopoapp.utils.getZodiacSignImage
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi

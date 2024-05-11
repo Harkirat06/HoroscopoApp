@@ -12,6 +12,10 @@ import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeDataSource
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeDataSourceImpl
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepositoryImpl
+import dadm.hsingh.horoscopoapp.data.ranking.RankingDataSource
+import dadm.hsingh.horoscopoapp.data.ranking.RankingDataSourceImpl
+import dadm.hsingh.horoscopoapp.data.ranking.RankingRepository
+import dadm.hsingh.horoscopoapp.data.ranking.RankingRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -37,4 +41,10 @@ abstract class HoroscopeBinderModule {
 
     @Binds
     abstract fun bindMonthlyHoroscopeDataSource(impl: MonthlyHoroscopeDataSourceImpl): MonthlyHoroscopeDataSource
+
+    @Binds
+    abstract fun bindRankingDataSource(impl: RankingDataSourceImpl): RankingDataSource
+
+    @Binds
+    abstract fun bindRankingRepository(impl: RankingRepositoryImpl): RankingRepository
 }

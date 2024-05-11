@@ -17,58 +17,24 @@
 
             <!-- Título -->
             <TextView
-                android:id="@+id/textViewTitle"
+                android:id="@+id/textViewMonthlyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Título Aquí"
+                android:text=""
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"/>
 
             <!-- Párrafo largo -->
             <TextView
                 android:id="@+id/textViewParagraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem"
+                android:text="@string/loading"
                 android:textSize="18sp"
-                android:padding="16dp"/>
-
-            <!-- Apartado 1 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Apartado 1"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="16dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
-
-            <!-- Apartado 2 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Apartado 2"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="16dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"/>
 
         </LinearLayout>
     </ScrollView>
