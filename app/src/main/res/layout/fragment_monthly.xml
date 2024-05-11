@@ -20,56 +20,72 @@
                 android:id="@+id/textViewTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Título Aquí"
+                android:text="Abril"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"
+                />
 
             <!-- Párrafo largo -->
             <TextView
                 android:id="@+id/textViewParagraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/loading"
-                android:textSize="18sp"
+                android:text="@string/lorem"
+                android:textSize="15sp"
                 android:padding="16dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textStyle="italic"
+                />
 
             <!-- Apartado 1 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apartado 1"
+                android:text="Días Desafiantes"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"
+                />
 
             <TextView
+                android:id="@+id/desafiante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
+                android:textSize="15sp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:textStyle="italic"
+                />
 
             <!-- Apartado 2 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apartado 2"
+                android:text="Dias Desctacados"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"
+                />
 
             <TextView
+                android:id="@+id/destacado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem"
-                android:textSize="16sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"/>
+                android:textSize="15sp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:textStyle="italic"
+                />
 
         </LinearLayout>
     </ScrollView>
