@@ -9,6 +9,7 @@ data class Friend(
     val dateBirth: LocalDate,
     val timeBirth: LocalTime,
     val placeBirth: String,
-    val zodiacSign: Int
-
+    val zodiacSign: String,
+    val defaultImage: Int,
+    val imageUri : String?
 )

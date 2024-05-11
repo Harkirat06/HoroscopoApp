@@ -1,7 +1,6 @@
 package dadm.hsingh.horoscopoapp.ui.compatibility.friends
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.findNavController
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentFriendsBinding
 import dadm.hsingh.horoscopoapp.domain.model.Friend
@@ -18,7 +16,6 @@ import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormF
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
-import java.util.Locale
 
 class FriendsFragment : Fragment(R.layout.fragment_friends){
     private var _binding : FragmentFriendsBinding? = null
@@ -98,7 +95,6 @@ class FriendsFragment : Fragment(R.layout.fragment_friends){
             val timeBirth = generateRandomTime()
             val placeBirth = places.random()
             val zodiacSignImage = zodiacImages.random()
-            friendsList.add(Friend(id, name, dateBirth, timeBirth, placeBirth, zodiacSignImage))
         }
         return friendsList
     }

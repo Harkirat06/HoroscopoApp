@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -17,11 +18,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.ActivityMainBinding
 import dadm.hsingh.horoscopoapp.ui.settings.SettingsViewModel
 import dadm.hsingh.horoscopoapp.utils.createNotificationChannel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.jsoup.Jsoup
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -34,6 +43,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.SPANISH)
+            .build()
+        val englishSpanishTranslator = Translation.getClient(options)
+        lifecycle.addObserver(englishSpanishTranslator)
+
+        var conditions = DownloadConditions.Builder()
+            .requireWifi()
+            .build()
+        englishSpanishTranslator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                // Model downloaded successfully. Okay to start translating.
+                // (Set a flag, unhide the translation UI, etc.)
+            }
+            .addOnFailureListener { exception ->
+                // Model couldn’t be downloaded or other internal error.
+                // ...
+            }
+
 
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -64,6 +94,37 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
         }
+
+        //Testear
+        CoroutineScope(Dispatchers.IO).launch {
+            var document = Jsoup.connect("https://www.esperanzagraciaoficial.es/horoscopo-semanal/").get()
+            var items = document.select("div.row.ranking")
+
+            val html = Jsoup.parse(items.html().trimIndent())
+
+            val fecha = html.select("div.header").text()
+
+            Log.d("Scrapping", fecha)
+
+
+            // Recorrer cada elemento del ranking
+            val ranking = items.select("div.content")
+            ranking.select("ul li").forEachIndexed { index, element ->
+                val posicion = element.text().substringBefore(" ")
+                val signo = element.text().substringAfter(" ").substringBefore(" ")
+                val enlace = element.select("a").attr("href")
+                val imagen = element.select("img").attr("src")
+
+                Log.d(
+                    "Scrapping",
+                    "Posición: $posicion, Signo: $signo, Enlace: $enlace, Imagen: $imagen"
+                )
+
+            }
+        }
+
+
+
 
         modoOcuro()
         servicioNotificaciones()

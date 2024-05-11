@@ -1,6 +1,5 @@
 package dadm.hsingh.horoscopoapp.data.friend
 
-import dadm.hsingh.horoscopoapp.data.friend.model.FriendDto
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import kotlinx.coroutines.flow.Flow
 

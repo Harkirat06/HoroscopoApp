@@ -1,10 +1,7 @@
 package dadm.hsingh.horoscopoapp.data.horoscope.monthly
 
 import dadm.hsingh.horoscopoapp.data.horoscope.ConnectivityChecker
-import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeDataSource
-import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.horoscope.model.toMonthlyDomain
-import dadm.hsingh.horoscopoapp.domain.model.DailyHoroscope
 import dadm.hsingh.horoscopoapp.domain.model.MonthlyHoroscope
 import dadm.hsingh.horoscopoapp.utils.NoInternetException
 import javax.inject.Inject

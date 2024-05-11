@@ -1,28 +1,20 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope.daily
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.animation.AnimationUtils
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.ScrollView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentDailyBinding
-import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,13 +30,41 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDailyBinding.bind(view)
 
+
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.SPANISH)
+            .build()
+
+        val englishSpanishTranslator = Translation.getClient(options)
+        lifecycle.addObserver(englishSpanishTranslator)
         viewModel.getDailyHoroscope()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.dailyHoroscope.collect{dailyHoroscope ->
                     if (dailyHoroscope != null) {
-                        binding.textViewParagraph.text = dailyHoroscope.dailyHoroscopeText
+                        viewModel.getLanguage()
+                        viewModel.language.collect{language->
+                            if(language.isNotEmpty()){
+                                if(language == "es"){
+                                    englishSpanishTranslator.translate(dailyHoroscope.dailyHoroscopeText)
+                                        .addOnSuccessListener { translatedText ->
+                                            // Translation successful.
+                                            binding.textViewParagraph.text = translatedText
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            // Error.
+                                            // ...
+                                        }
+                                }else{
+                                    binding.textViewParagraph.text = dailyHoroscope.dailyHoroscopeText
+                                }
+                            }
+
+                        }
+
+
                     }
                 }
             }

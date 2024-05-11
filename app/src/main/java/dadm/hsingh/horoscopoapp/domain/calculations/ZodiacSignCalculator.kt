@@ -5,7 +5,7 @@ import dadm.hsingh.horoscopoapp.R
 import java.util.Calendar
 import java.util.Date
 
-object SignosZodiacales {
+object SignosZodiacalesImages {
     val ACUARIO = R.drawable.aquarius
     val PISCIS = R.drawable.pisces
     val ARIES = R.drawable.aries
@@ -20,7 +20,47 @@ object SignosZodiacales {
     val CAPRICORNIO = R.drawable.capricorn
 }
 
-fun getZodiacSign(birthDate: Date): Int {
+object SignosZodiacales {
+    val ACUARIO = "aquarius"
+    val PISCIS = "pisces"
+    val ARIES = "aries"
+    val TAURO = "taurus"
+    val GEMINIS = "gemini"
+    val CANCER = "cancer"
+    val LEO = "leo"
+    val VIRGO = "virgo"
+    val LIBRA = "libra"
+    val ESCORPIO = "scorpio"
+    val SAGITARIO = "sagittarius"
+    val CAPRICORNIO = "capricorn"
+}
+
+fun getZodiacSignImage(birthDate: Date): Int {
+    val calendar = Calendar.getInstance()
+    calendar.time = birthDate
+    val month = calendar.get(Calendar.MONTH)
+    val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+    Log.d(month.toString(), "debar")
+    Log.d(day.toString(), "debar")
+
+    return when {
+        (month == Calendar.JANUARY && day >= 20) || (month == Calendar.FEBRUARY && day <= 18) -> SignosZodiacalesImages.ACUARIO
+        (month == Calendar.FEBRUARY && day >= 19) || (month == Calendar.MARCH && day <= 20) -> SignosZodiacalesImages.PISCIS
+        (month == Calendar.MARCH && day >= 21) || (month == Calendar.APRIL && day <= 19) -> SignosZodiacalesImages.ARIES
+        (month == Calendar.APRIL && day >= 20) || (month == Calendar.MAY && day <= 20) -> SignosZodiacalesImages.TAURO
+        (month == Calendar.MAY && day >= 21) || (month == Calendar.JUNE && day <= 20) -> SignosZodiacalesImages.GEMINIS
+        (month == Calendar.JUNE && day >= 21) || (month == Calendar.JULY && day <= 22) -> SignosZodiacalesImages.CANCER
+        (month == Calendar.JULY && day >= 23) || (month == Calendar.AUGUST && day <= 22) -> SignosZodiacalesImages.LEO
+        (month == Calendar.AUGUST && day >= 23) || (month == Calendar.SEPTEMBER && day <= 22) -> SignosZodiacalesImages.VIRGO
+        (month == Calendar.SEPTEMBER && day >= 23) || (month == Calendar.OCTOBER && day <= 22) -> SignosZodiacalesImages.LIBRA
+        (month == Calendar.OCTOBER && day >= 23) || (month == Calendar.NOVEMBER && day <= 21) -> SignosZodiacalesImages.ESCORPIO
+        (month == Calendar.NOVEMBER && day >= 22) || (month == Calendar.DECEMBER && day <= 21) -> SignosZodiacalesImages.SAGITARIO
+        else -> SignosZodiacalesImages.CAPRICORNIO
+    }
+}
+
+fun getZodiacSign(birthDate: Date): String {
     val calendar = Calendar.getInstance()
     calendar.time = birthDate
     val month = calendar.get(Calendar.MONTH)

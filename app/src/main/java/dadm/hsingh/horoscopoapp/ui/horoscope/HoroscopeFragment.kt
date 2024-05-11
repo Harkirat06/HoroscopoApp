@@ -2,29 +2,20 @@ package dadm.hsingh.horoscopoapp.ui.horoscope
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
-import dadm.hsingh.horoscopoapp.ui.settings.SettingsViewModel
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 
-@AndroidEntryPoint
-class HoroscopeFragment : Fragment(R.layout.fragment_horoscope) {
+class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
     private var _binding : FragmentHoroscopeBinding? = null
     private val binding get() = _binding!!
 
     private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
-
-
 
 
 
@@ -65,6 +56,8 @@ class HoroscopeFragment : Fragment(R.layout.fragment_horoscope) {
                 binding.tabLayout.selectTab((binding.tabLayout.getTabAt((position))))
             }
         })
+
+
 
 
 

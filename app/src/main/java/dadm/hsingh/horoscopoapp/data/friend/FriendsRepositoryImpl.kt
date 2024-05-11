@@ -1,6 +1,5 @@
 package dadm.hsingh.horoscopoapp.data.friend
 
-import dadm.hsingh.horoscopoapp.data.friend.model.FriendDto
 import dadm.hsingh.horoscopoapp.data.friend.model.toDatabaseDto
 import dadm.hsingh.horoscopoapp.data.friend.model.toDomain
 import dadm.hsingh.horoscopoapp.domain.model.Friend
