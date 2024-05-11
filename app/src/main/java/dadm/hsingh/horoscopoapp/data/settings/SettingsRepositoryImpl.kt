@@ -1,15 +1,9 @@
 package dadm.hsingh.horoscopoapp.data.settings
 
-import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.domain.model.Friend
-import dadm.hsingh.horoscopoapp.utils.getZodiacSign
-import dadm.hsingh.horoscopoapp.utils.getZodiacSignImage
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class SettingsRepositoryImpl
