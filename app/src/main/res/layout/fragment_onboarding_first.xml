@@ -14,16 +14,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editTextDateBirth"/>
+        app:layout_constraintBottom_toTopOf="@id/editDateBirth"
+        />
 
     <LinearLayout
-        android:id="@+id/editTextDateBirth"
+        android:id="@+id/editDateBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        app:layout_constraintBottom_toTopOf="@id/editTextTimeBirth"
+        app:layout_constraintBottom_toTopOf="@id/editTimeBirth"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -33,6 +34,8 @@
             android:layout_marginTop="16dp"
             android:hint="@string/birth_date"
             android:layout_weight="1"
+            android:enabled="false"
+            android:textColor="#000000"
             />
 
         <ImageButton
@@ -48,12 +51,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/editTextTimeBirth"
+        android:id="@+id/editTimeBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateBirth"
+        app:layout_constraintTop_toBottomOf="@+id/editDateBirth"
         app:layout_constraintBottom_toBottomOf="parent"
         >
 
@@ -62,8 +65,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/time_of_birth"
             android:layout_weight="1"
+            android:enabled="false"
+            android:hint="@string/time_of_birth"
+            android:textColor="#000000"
+
             />
 
         <ImageButton

@@ -3,11 +3,18 @@ package dadm.hsingh.horoscopoapp.ui.horoscope
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
+import dadm.hsingh.horoscopoapp.ui.horoscope.monthly.MonthlyViewModel
+import kotlinx.coroutines.launch
 
 
 class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
@@ -17,7 +24,7 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
     private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
 
-
+    //private val viewModel : MonthlyViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
@@ -57,6 +64,18 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
             }
         })
 
+        /*
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.showError.collect{ show ->
+                    if (show != null){
+                        Snackbar.make(binding.root, show.toString(), Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+         */
 
 
 

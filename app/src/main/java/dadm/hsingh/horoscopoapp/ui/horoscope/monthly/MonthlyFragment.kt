@@ -1,5 +1,6 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope.monthly
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
 
     private val viewModel : MonthlyViewModel by viewModels()
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMonthlyBinding.bind(view)
@@ -34,6 +36,7 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
 
         val englishSpanishTranslator = Translation.getClient(options)
         lifecycle.addObserver(englishSpanishTranslator)
+
         viewModel.getMonthlyHoroscope()
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -43,7 +46,11 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
                         viewModel.getLanguage()
                         viewModel.language.collect { language ->
                             if (language.isNotEmpty()) {
-                                binding.textViewMonthlyTitle.text = viewModel.getDate()
+
+                                val text1 =  "Days ${monthlyHoroscope.challengingDays[0]}, ${monthlyHoroscope.challengingDays[1]} and ${monthlyHoroscope.challengingDays[2]} are considered challenging for you. During these days, you could face obstacles or situations that require extra effort. You may have to overcome difficulties or make important decisions. Stay alert and be prepared to meet challenges with determination1"
+                                val text2 = "Days ${monthlyHoroscope.standoutDays[0]}, ${monthlyHoroscope.standoutDays[1]} and ${monthlyHoroscope.standoutDays[2]} are especially significant for you this month. During these days, you can expect remarkable experiences or moments of importance. It may be a period when you feel inspired, make significant breakthroughs, or encounter exceptional opportunities. Make the most of these exceptional days."
+
+
                                 if (language == "es") {
                                     englishSpanishTranslator.translate(monthlyHoroscope.monthlyHoroscopeText)
                                         .addOnSuccessListener { translatedText ->
@@ -54,9 +61,33 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
                                             // Error.
                                             // ...
                                         }
-                                } else {
+
+                                    englishSpanishTranslator.translate(text1)
+                                        .addOnSuccessListener { translatedText ->
+                                            // Translation successful.
+                                            binding.desafiante.text = translatedText
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            // Error.
+                                            // ...
+                                        }
+
+                                    englishSpanishTranslator.translate(text2)
+                                        .addOnSuccessListener { translatedText ->
+                                            // Translation successful.
+                                            binding.destacado.text = translatedText
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            // Error.
+                                            // ...
+                                        }
+                                }
+                                else {
                                     binding.textViewParagraph.text =
                                         monthlyHoroscope.monthlyHoroscopeText
+
+                                    binding.desafiante.text = text1
+                                    binding.destacado.text = text2
                                 }
                             }
                         }
