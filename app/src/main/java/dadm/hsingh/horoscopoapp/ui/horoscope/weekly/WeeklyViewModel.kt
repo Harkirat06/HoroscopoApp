@@ -5,19 +5,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.ranking.RankingRepository
+import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
 import dadm.hsingh.horoscopoapp.domain.model.Ranking
 import dadm.hsingh.horoscopoapp.domain.model.RankingItem
 import dadm.hsingh.horoscopoapp.domain.model.WeeklyHoroscope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class WeeklyViewModel @Inject() constructor(
     private val weeklyRep : WeeklyHoroscopeRepository,
-    private val rankRep : RankingRepository
+    private val rankRep : RankingRepository,
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     private val _weeklyHoroscope : MutableStateFlow<WeeklyHoroscope?> = MutableStateFlow(null)
@@ -29,6 +32,9 @@ class WeeklyViewModel @Inject() constructor(
 
     private val _showError : MutableStateFlow<Throwable?> = MutableStateFlow(null)
     val showError get() = _showError.asStateFlow()
+
+    private val _language : MutableStateFlow<String> = MutableStateFlow("")
+    val language get() = _language.asStateFlow()
 
     fun getWeeklyHoroscope() {
         viewModelScope.launch {
@@ -45,6 +51,15 @@ class WeeklyViewModel @Inject() constructor(
                 onSuccess = {_ranking.value = it},
                 onFailure = { _showError.value = it }
             )
+        }
+    }
+    fun getLanguage() {
+        viewModelScope.launch {
+            settingsRepository.getLanguage().collect { languageCode ->
+                _language.update {
+                    languageCode.ifEmpty{ "en" }
+                }
+            }
         }
     }
 }

@@ -30,9 +30,10 @@
                 android:id="@+id/textViewParagraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem"
+                android:text="@string/loading"
                 android:textSize="18sp"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:gravity="center"/>
 
             <!-- Apartado 1 -->
             <TextView

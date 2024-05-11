@@ -8,6 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentWeeklyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,13 +29,40 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentWeeklyBinding.bind(view)
 
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.SPANISH)
+            .build()
+
+        val englishSpanishTranslator = Translation.getClient(options)
+        lifecycle.addObserver(englishSpanishTranslator)
         viewModel.getWeeklyHoroscope()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.weeklyHoroscope.collect{weeklyHoroscope ->
                     if (weeklyHoroscope != null) {
-                        binding.textViewParagraph.text = weeklyHoroscope.weeklyHoroscopeText
+                        viewModel.getLanguage()
+                        viewModel.language.collect{language->
+                            if(language.isNotEmpty()){
+                                if(language == "es"){
+                                    englishSpanishTranslator.translate(weeklyHoroscope.weeklyHoroscopeText)
+                                        .addOnSuccessListener { translatedText ->
+                                            // Translation successful.
+                                            binding.textViewParagraph.text = translatedText
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            // Error.
+                                            // ...
+                                        }
+                                }else{
+                                    binding.textViewParagraph.text = weeklyHoroscope.weeklyHoroscopeText
+                                }
+                            }
+
+                        }
+
+
                     }
                 }
             }
