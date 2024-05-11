@@ -39,4 +39,5 @@
     <string name="recuerda_felicitar">"Recuerda felicitar a "</string>
     <string name="loading">Cargando...</string>
     <string name="previous">Anterior</string>
+    <string name="rellena_primero">Primero debes rellenar todos los campos</string>
 </resources>

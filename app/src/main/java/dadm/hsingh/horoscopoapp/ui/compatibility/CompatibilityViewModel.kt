@@ -102,7 +102,7 @@ class CompatibilityViewModel @Inject constructor(
         val formatter2 = DateTimeFormatter.ofPattern("HH:mm") // Formato del string de hora
         val timeBirth_local: LocalTime = LocalTime.parse(timeBirth, formatter2) // Parseamos el string a LocalTime
 
-        val format = SimpleDateFormat("yyyy/MM/dd") // Formato del string de fecha
+        val format = SimpleDateFormat("dd/MM/yyyy") // Formato del string de fecha
         val date: Date = format.parse(dateBirth) // Parseamos el string a Date
 
         if(friend.value != null){
@@ -126,7 +126,7 @@ class CompatibilityViewModel @Inject constructor(
 
         }else{
             val friend = Friend(
-                id = Random.nextInt(100).toString(),
+                id = Random.nextInt(1000000000).toString(),
                 name = name,
                 dateBirth = dateBirth_local,
                 timeBirth = timeBirth_local,

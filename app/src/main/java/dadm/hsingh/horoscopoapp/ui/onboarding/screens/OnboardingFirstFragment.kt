@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentOnboardingFirstBinding
 import dadm.hsingh.horoscopoapp.ui.onboarding.OnboardingViewModel
+import kotlinx.coroutines.flow.collect
 import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.time.ZoneId
@@ -25,18 +27,28 @@ class OnboardingFirstFragment : Fragment(R.layout.fragment_onboarding_first){
 
     private val viewModel: OnboardingViewModel by activityViewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOnboardingFirstBinding.bind(view)
 
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
         binding.next.setOnClickListener {
-            viewPager?.currentItem = 1
-            if (!binding.editTextName.text.isNullOrBlank()) {
-                //Log.d("Setname", binding.editTextName.text.toString())
+
+            if (
+                !binding.editTextName.text.isNullOrBlank()
+                && viewModel.birthDate.value != null
+                && viewModel.birthTime.value != null
+                )
+            {
+
+                Log.d("Setname", binding.editTextName.text.toString())
                 viewModel.setName(binding.editTextName.text.toString())
                 //viewModel.getName()?.let { name -> Log.d("Setname in Viewmodel", name) }
+                viewPager?.currentItem = 1
+            }
+            else {
+                Snackbar.make(view, R.string.rellena_primero, Snackbar.LENGTH_SHORT).show()
             }
         }
 

@@ -2,17 +2,29 @@ package dadm.hsingh.horoscopoapp.ui.onboarding
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
+import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSign
+import dadm.hsingh.horoscopoapp.domain.calculations.getZodiacSignImage
 import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneOffset
+import java.util.Date
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
-class OnboardingViewModel @Inject constructor(): ViewModel() {
+class OnboardingViewModel @Inject constructor(
+    private val friendsRepo : FriendsRepository
+): ViewModel() {
     private val _name = MutableStateFlow<String?>(null)
     val name = _name.asStateFlow()
 
@@ -29,48 +41,48 @@ class OnboardingViewModel @Inject constructor(): ViewModel() {
     val image = _image.asStateFlow()
 
     fun setName(name: String) {
-        _name.value = name
+        _name.update { name }
     }
 
     fun setBirthDate(birthDate: LocalDate) {
-        _birthDate.value = birthDate
+        _birthDate.update { birthDate }
     }
 
     fun setBirthTime(birthTime: LocalTime) {
-        _birthTime.value = birthTime
+        _birthTime.update{ birthTime }
     }
 
     fun setBirthPlace(birthPlace: String) {
-        _birthPlace.value = birthPlace
+        _birthPlace.update { birthPlace }
     }
     fun setImageUri(uri : String){
-        _image.value = uri
-    }
-
-    fun getName(): String? {
-        return _name.value
-    }
-
-    fun getBirthDate(): LocalDate? {
-        return _birthDate.value
-    }
-
-    fun getBirthTime(): LocalTime? {
-        return _birthTime.value
-    }
-
-    fun getBirthPlace(): String? {
-        return _birthPlace.value
-    }
-    fun getImageUri(): String? {
-        return _image.value
+        _image.update { uri }
     }
 
 
     fun checkRequiredFields(): Boolean {
         Log.d("check value birthDate", _birthDate.value.toString())
-        return  _birthDate.value.toString() != null &&
-                !_name.value.toString().isNullOrBlank() &&
-                !_birthPlace.value.toString().isNullOrBlank()
+        return  birthDate.value  != null &&
+                birthTime.value != null &&
+                !name.value.isNullOrBlank() &&
+                !birthPlace.value.isNullOrBlank()
+    }
+
+    fun saveUser() {
+        val zodiacDate: Date = Date.from(birthDate.value!!.atStartOfDay().toInstant(ZoneOffset.ofHours(0)))
+        val user = Friend(
+            id = "USUARIO",
+            name = name.value!!,
+            dateBirth = birthDate.value!!,
+            timeBirth = birthTime.value!!,
+            placeBirth = birthPlace.value!!,
+            defaultImage = getZodiacSignImage(zodiacDate),
+            zodiacSign = getZodiacSign(zodiacDate),
+            imageUri = image.value
+        )
+        viewModelScope.launch {
+            friendsRepo.addFriend(user)
+        }
+
     }
 }

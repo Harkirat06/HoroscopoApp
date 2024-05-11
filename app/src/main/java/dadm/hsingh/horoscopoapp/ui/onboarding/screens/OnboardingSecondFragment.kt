@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentOnboardingSecondBinding
 import dadm.hsingh.horoscopoapp.ui.onboarding.OnboardingViewModel
@@ -37,9 +38,13 @@ class OnboardingSecondFragment : Fragment(R.layout.fragment_onboarding_second){
         binding.finish.setOnClickListener {
             if (!binding.editTextPlaceBirth.text.isNullOrBlank()) {
                 viewModel.setBirthPlace(binding.editTextPlaceBirth.text.toString())
-                viewModel.getBirthPlace()?.let { place -> Log.d("Set placebirth", place) }
             }
-            onBoardingFinished()
+            if (viewModel.checkRequiredFields()) {
+                viewModel.saveUser()
+                onBoardingFinished()
+            } else {
+                Snackbar.make(view, R.string.rellena_primero, Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         binding.previous.setOnClickListener {
