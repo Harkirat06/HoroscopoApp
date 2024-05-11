@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
         setContentView(binding.root)
-        binding.toolbar.setTitleTextAppearance(this, R.style.ToolbarTitleText);
+        binding.toolbar.setTitleTextAppearance(this, R.style.ToolbarTitleText)
         setSupportActionBar(binding.toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
