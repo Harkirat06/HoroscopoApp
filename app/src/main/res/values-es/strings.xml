@@ -37,4 +37,6 @@
     <string name="reminderContent">\"¡Buenos días! Recuerda leer tu horóscopo de hoy\"</string>
     <string name="hay_cumple">¡Es el cumpleaños de alguien!</string>
     <string name="recuerda_felicitar">"Recuerda felicitar a "</string>
+    <string name="loading">Cargando...</string>
+    <string name="previous">Anterior</string>
 </resources>
