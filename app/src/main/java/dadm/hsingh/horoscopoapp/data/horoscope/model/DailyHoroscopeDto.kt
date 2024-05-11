@@ -1,8 +1,10 @@
 package dadm.hsingh.horoscopoapp.data.horoscope.model
 
+import android.util.Log
 import com.squareup.moshi.JsonClass
 import dadm.hsingh.horoscopoapp.domain.model.DailyHoroscope
 import java.time.LocalDate
+import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
@@ -14,8 +16,8 @@ data class DailyHoroscopeDto(
 ){
     fun toDomain(): DailyHoroscope {
         try {
-            val formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy")
-            val date = LocalDate.parse(data.date.trim(), formatter)
+            val date = stringToLocalDate(data.date)
+            Log.d("fecha formateada", date.toString())
 
             return DailyHoroscope(
                 dailyHoroscopeText = data.horoscope_data,
@@ -28,6 +30,15 @@ data class DailyHoroscopeDto(
             dailyHoroscopeText = data.horoscope_data,
             date = LocalDate.now()
         )
+    }
+
+    fun stringToLocalDate(string: String): LocalDate{
+        //Recibimos la fecha con forma "MMM dd, AAAA"
+        val split = string.split(" ")
+        val month: Month = Month.valueOf(split[0].uppercase())
+        val day: Int = split[1].dropLast(1).toInt()
+        val year: Int = split[2].toInt()
+        return LocalDate.of(year, month, day)
     }
 }
 

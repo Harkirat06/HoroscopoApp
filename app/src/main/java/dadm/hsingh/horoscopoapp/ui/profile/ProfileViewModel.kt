@@ -14,7 +14,7 @@ class ProfileViewModel @Inject() constructor(
 ) : ViewModel() {
     private val zodiacSigns = ZodiacSigns()
 
-    fun getZodiacSign(sign: String): ZodiacSign? {
-        return zodiacSigns.getZodiacSign(sign)
+    fun getZodiacSign(sign: String, lang: String): ZodiacSign? {
+        return zodiacSigns.getZodiacSign(sign, lang)
     }
 }
