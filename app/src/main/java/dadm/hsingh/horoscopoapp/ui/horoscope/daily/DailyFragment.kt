@@ -47,6 +47,7 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
                         viewModel.getLanguage()
                         viewModel.language.collect{language->
                             if(language.isNotEmpty()){
+                                binding.textViewTitle.text = viewModel.getDate()
                                 if(language == "es"){
                                     englishSpanishTranslator.translate(dailyHoroscope.dailyHoroscopeText)
                                         .addOnSuccessListener { translatedText ->

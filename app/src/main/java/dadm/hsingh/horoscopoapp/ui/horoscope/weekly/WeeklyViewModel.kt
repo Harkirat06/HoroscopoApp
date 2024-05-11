@@ -1,19 +1,20 @@
 package dadm.hsingh.horoscopoapp.ui.horoscope.weekly
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.ranking.RankingRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
 import dadm.hsingh.horoscopoapp.domain.model.Ranking
-import dadm.hsingh.horoscopoapp.domain.model.RankingItem
 import dadm.hsingh.horoscopoapp.domain.model.WeeklyHoroscope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -61,5 +62,12 @@ class WeeklyViewModel @Inject() constructor(
                 }
             }
         }
+    }
+
+    fun getDate() : String{
+        val locale = if (language.value == "en") Locale.ENGLISH else Locale("es", "ES")
+        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", locale)
+        val date = dateFormat.format(Date())
+        return date.substring(0, 1).uppercase(Locale.getDefault()) + date.substring(1)
     }
 }
