@@ -1,6 +1,6 @@
-package dadm.hsingh.horoscopoapp.data.ranking.model
+package dadm.hsingh.horoscopoapp.domain.model
 
-data class RankingDto(
+data class Ranking(
     val fecha: String,
     val items: MutableList<RankingItem> = mutableListOf()
 )

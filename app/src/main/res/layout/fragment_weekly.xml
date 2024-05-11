@@ -80,12 +80,13 @@
                     <TableRow
                         >
                         <TextView
+                            android:id="@+id/rankFecha"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
                             android:text="Del 31 de jul al 06 de Agosto"
                             android:textColor="@android:color/white"
-                            android:textStyle="italic"
+                            android:textStyle="bold"
                             android:gravity="center"
                             android:background="@color/md_theme_light_onTertiaryContainer"
                             />
@@ -97,29 +98,36 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="1"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="1."
+                            android:textStyle="italic"
                             android:gravity="center"
+                            android:textSize="25dp"
+                            android:textColor="@android:color/black"
+
                             />
 
                         <ImageView
+                            android:id="@+id/icon1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -128,29 +136,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="2"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="2."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
+                            android:textSize="25dp"
                             android:gravity="center"
                             />
 
                         <ImageView
+                            android:id="@+id/icon2"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign2"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -159,29 +173,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="3"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="3."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon3"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign3"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -190,29 +210,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="4"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="4."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon4"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign4"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -221,29 +247,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="5"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="5."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon5"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign5"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -252,29 +284,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="6"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="6."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon6"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign6"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -283,29 +321,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="7"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="7."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon7"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign7"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -314,29 +358,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="8"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="8."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon8"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign8"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -345,29 +395,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="9"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="9."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon9"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign9"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -376,29 +432,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="10"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="10."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon10"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign10"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -407,29 +469,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="11"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="11."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon11"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign11"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 
@@ -438,29 +506,35 @@
                         >
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            android:text="12"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:text="12."
+                            android:textStyle="italic"
+                            android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:textSize="25dp"
                             />
 
                         <ImageView
+                            android:id="@+id/icon12"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="0.2"
                             android:src="@drawable/settings"
+                            android:padding="7dp"
                             />
 
                         <TextView
+                            android:id="@+id/sign12"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="Capricornio"
-                            android:textStyle="bold"
+                            android:textStyle="italic"
                             android:paddingStart="20dp"
-                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textColor="@android:color/black"
                             />
                     </TableRow>
 

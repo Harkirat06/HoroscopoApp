@@ -1,4 +1,4 @@
-package dadm.hsingh.horoscopoapp.domain.calculations
+package dadm.hsingh.horoscopoapp.utils
 
 import android.util.Log
 import dadm.hsingh.horoscopoapp.R
@@ -82,5 +82,24 @@ fun getZodiacSign(birthDate: Date): String {
         (month == Calendar.OCTOBER && day >= 23) || (month == Calendar.NOVEMBER && day <= 21) -> SignosZodiacales.ESCORPIO
         (month == Calendar.NOVEMBER && day >= 22) || (month == Calendar.DECEMBER && day <= 21) -> SignosZodiacales.SAGITARIO
         else -> SignosZodiacales.CAPRICORNIO
+    }
+}
+
+public fun getIconBySign(sign : String): Int{
+    return when (sign){
+        "CAPRICORNIO" -> R.drawable.rank_capricorn
+        "LEO" -> R.drawable.rank_leo
+        "TAURO" -> R.drawable.rank_taurus
+        "SAGITARIO" -> R.drawable.rank_sagittarius
+        "ACUARIO" -> R.drawable.rank_aquarius
+        "PISCIS" -> R.drawable.rank_pisces
+        "GéMINIS" -> R.drawable.rank_gemini
+        "VIRGO" -> R.drawable.rank_virgo
+        "LIBRA" -> R.drawable.rank_libra
+        "CáNCER" -> R.drawable.rank_cancer
+        "ESCORPIO" -> R.drawable.rank_scorpio
+        "ARIES" -> R.drawable.rank_aries
+        else -> -1
+
     }
 }
