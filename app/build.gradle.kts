@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.mlkit:translate:17.0.2")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation(libs.androidx.activity)

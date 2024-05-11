@@ -37,4 +37,16 @@
     <string name="birth_date">Birth Date (dd/MM/yyyy)</string>
     <string name="time_of_birth">Time of Birth (HH:MM)</string>
     <string name="modify">Modify</string>
+    <string name="notifications">Notifications</string>
+    <string name="friendBirthdays">Friend birthdays</string>
+    <string name="yourDailyHoroscope">Your daily horoscope</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="notification_channel_name">Horoscope notifications</string>
+    <string name="notification_channel_description">Horoscope notifications channel</string>
+    <string name="reminder">Reminder</string>
+    <string name="reminderContent">Good morning! Remember to read your horoscope today.</string>
+    <string name="hay_cumple">It\'s someone\'s birthday!</string>
+    <string name="recuerda_felicitar">Remember to congratulate</string>
+    <string name="loading">Loading...</string>
+    <string name="previous">Previous</string>
 </resources>

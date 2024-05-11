@@ -108,6 +108,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         }
         if(allGranted){
             Toast.makeText(context, "All permission granted", Toast.LENGTH_LONG).show()
+            takePicture()
         }else{
             Toast.makeText(context, "All or some permissions are denied", Toast.LENGTH_LONG).show()
 
@@ -134,11 +135,7 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         binding.cameraBt.setOnClickListener{
             if (!allPermissionsGranted()){
                 requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
-                if(allPermissionsGranted()){
-                    takePicture()
-                }
             }else{
-                Log.d("HOLAAAA", "FORMAT")
                 takePicture()
             }
         }
@@ -155,7 +152,13 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
             binding.birthDateInput.text = Editable.Factory.getInstance().newEditable(friend.dateBirth.format(formatter).toString())
             binding.birthTimeInput.text = Editable.Factory.getInstance().newEditable(friend.timeBirth.toString())
             binding.editTextPlaceBirth.text = Editable.Factory.getInstance().newEditable(friend.placeBirth)
-            binding.imageViewFriend.setImageURI(Uri.parse(friend.imageUri))
+            if(friend.imageUri != null){
+                viewModel.setImageUri(friend.imageUri)
+                binding.imageViewFriend.setImageURI(Uri.parse(friend.imageUri))
+            }else{
+                binding.imageViewFriend.setImageResource(friend.defaultImage)
+            }
+
             binding.buttonAddFriend.text = getString(R.string.modify)
         }
 
@@ -198,15 +201,21 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         }
 
         binding.buttonAddFriend.setOnClickListener {
-            viewModel.addToFavourites(
-                binding.editTextName.text.toString(),
-                binding.birthDateInput.text.toString(),
-                binding.birthTimeInput.text.toString(),
-                binding.editTextPlaceBirth.text.toString(),
-                viewModel.image.value
-            )
-            viewModel.resetFriend()
-            this.dismiss()
+            if(!isAnyFieldEmpty()){
+                viewModel.addToFavourites(
+                    binding.editTextName.text.toString(),
+                    binding.birthDateInput.text.toString(),
+                    binding.birthTimeInput.text.toString(),
+                    binding.editTextPlaceBirth.text.toString(),
+                    viewModel.image.value
+                )
+                viewModel.resetFriend()
+                viewModel.resetImageUri()
+                this.dismiss()
+            }else{
+                Toast.makeText(context, "Complete all fields", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -220,6 +229,11 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
         }
 
     }
+
+    private fun isAnyFieldEmpty() = (binding.editTextName.text.toString().isEmpty()
+            || binding.birthDateInput.text.toString().isEmpty()
+            || binding.birthTimeInput.text.toString().isEmpty()
+            || binding.editTextPlaceBirth.text.toString().isEmpty())
 
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
