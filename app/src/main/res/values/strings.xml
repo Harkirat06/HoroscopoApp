@@ -52,4 +52,5 @@
     <string name="rellena_primero">First, you should fill all fields</string>
     <string name="percentage_of_affinity">Percentage of affinity</string>
     <string name="calculating">Calculating...</string>
+    <string name="editar_perfil_usuario">Edit user profile</string>
 </resources>

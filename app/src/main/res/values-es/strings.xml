@@ -40,4 +40,7 @@
     <string name="loading">Cargando...</string>
     <string name="previous">Anterior</string>
     <string name="rellena_primero">Primero debes rellenar todos los campos</string>
+    <string name="percentage_of_affinity">Porcentaje de afinidad</string>
+    <string name="calculating">Calculando...</string>
+    <string name="editar_perfil_usuario">Editar perfil de usuario</string>
 </resources>

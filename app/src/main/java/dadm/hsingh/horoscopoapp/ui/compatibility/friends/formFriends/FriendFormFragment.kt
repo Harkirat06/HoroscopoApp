@@ -42,7 +42,9 @@ import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
 
-class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
+class FriendFormFragment(
+    private val disableNameEdit: Boolean = false
+) : DialogFragment(R.layout.forms_friend){
 
     private var _binding: FormsFriendBinding? = null
     private  val binding
@@ -226,6 +228,10 @@ class FriendFormFragment() : DialogFragment(R.layout.forms_friend){
                     }
                 }
             }
+        }
+
+        if (disableNameEdit) {
+            binding.editTextName.isEnabled = false
         }
 
     }

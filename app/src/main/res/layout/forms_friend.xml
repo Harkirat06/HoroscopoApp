@@ -90,6 +90,7 @@
             android:layout_marginTop="16dp"
             android:hint="@string/birth_date"
             android:layout_weight="1"
+            android:enabled="false"
             />
 
         <ImageButton
@@ -122,6 +123,7 @@
             android:layout_marginTop="16dp"
             android:hint="@string/time_of_birth"
             android:layout_weight="1"
+            android:enabled="false"
             />
 
         <ImageButton

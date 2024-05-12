@@ -1,30 +1,30 @@
 package dadm.hsingh.horoscopoapp.ui.settings
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.preference.PreferenceFragmentCompat
 import dadm.hsingh.horoscopoapp.R
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsPreferenceDataStore
-import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
 import dadm.hsingh.horoscopoapp.databinding.FragmentSettingsBinding
-import dadm.hsingh.horoscopoapp.ui.onboarding.ViewPagerFragment
+import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
+import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormFragment
 import dadm.hsingh.horoscopoapp.utils.AlarmService
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
 
     private var _binding: FragmentSettingsBinding? = null
@@ -34,6 +34,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private lateinit var alarmService : AlarmService
     private var notifReminder = false
     private var notifBirthdays = false
+
+
+    @Inject
+    lateinit var settingsPreferenceDataStore: SettingsPreferenceDataStore
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,6 +105,15 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
 
+
+        binding.buttonEditUser.setOnClickListener {
+            val friendsViewModel: CompatibilityViewModel by activityViewModels()
+            val friendUser = viewModel.getFriendUser()
+            friendsViewModel.setFriend(friendUser)
+            FriendFormFragment(disableNameEdit=true).show(childFragmentManager, "")
+        }
+
+
     }
 
     fun setAllBirthdayAlarms() {
@@ -121,7 +134,4 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         alarmService.setBirthdayAlarm(nextBirthday, "Paco")
     }
 
-
-
 }
-
