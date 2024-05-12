@@ -52,4 +52,7 @@
     <string name="rellena_primero">First, you should fill all fields</string>
     <string name="percentage_of_affinity">Percentage of affinity</string>
     <string name="calculating">Calculating...</string>
+    <string name="defects">Defects:</string>
+    <string name="virtues">Virtues:</string>
+    <string name="compatible_with">Compatible with:</string>
 </resources>

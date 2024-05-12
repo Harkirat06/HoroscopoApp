@@ -40,4 +40,9 @@
     <string name="loading">Cargando...</string>
     <string name="previous">Anterior</string>
     <string name="rellena_primero">Primero debes rellenar todos los campos</string>
+    <string name="percentage_of_affinity">Porcentaje de afinidad</string>
+    <string name="calculating">Calculando...</string>
+    <string name="defects">Defectos:</string>
+    <string name="virtues">Virtudes:</string>
+    <string name="compatible_with">Compatible con:</string>
 </resources>
