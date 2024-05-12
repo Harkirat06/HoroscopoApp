@@ -16,7 +16,6 @@ class CompatibilityFragment : Fragment(R.layout.fragment_compatibility){
     private var _binding : FragmentCompatibilityBinding? = null
     private val binding get() = _binding!!
 
-    private val tabTitles = arrayListOf(getString(R.string.calculator), getString(R.string.friends))
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
@@ -28,6 +27,7 @@ class CompatibilityFragment : Fragment(R.layout.fragment_compatibility){
         binding.viewPager3.adapter = adapter
 
 
+        val tabTitles = arrayListOf(getString(R.string.calculator), getString(R.string.friends))
         TabLayoutMediator(binding.tabLayout3, binding.viewPager3) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()

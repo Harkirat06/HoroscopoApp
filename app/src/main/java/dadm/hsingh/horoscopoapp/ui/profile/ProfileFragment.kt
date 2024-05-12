@@ -21,8 +21,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val tabTitles = arrayListOf(getString(R.string.personalInfo), getString(R.string.astralDescription))
-
     private val viewModel : ProfileViewModel by activityViewModels()
 
 
@@ -50,6 +48,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         }
 
 
+        val tabTitles = arrayListOf(getString(R.string.personalInfo), getString(R.string.astralDescription))
         TabLayoutMediator(binding.tabLayoutProfile, binding.viewPagerProfile) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
