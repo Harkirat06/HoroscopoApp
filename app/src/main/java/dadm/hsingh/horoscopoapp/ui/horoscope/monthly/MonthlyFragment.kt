@@ -16,6 +16,7 @@ import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentMonthlyBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.time.Month
 
 @AndroidEntryPoint
 
@@ -46,7 +47,7 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
                         viewModel.getLanguage()
                         viewModel.language.collect { language ->
                             if (language.isNotEmpty()) {
-
+                                binding.textViewTitle.text = viewModel.getDate().split(" ")[0]
                                 val text1 =  "Days ${monthlyHoroscope.challengingDays[0]}, ${monthlyHoroscope.challengingDays[1]} and ${monthlyHoroscope.challengingDays[2]} are considered challenging for you. During these days, you could face obstacles or situations that require extra effort. You may have to overcome difficulties or make important decisions. Stay alert and be prepared to meet challenges with determination1"
                                 val text2 = "Days ${monthlyHoroscope.standoutDays[0]}, ${monthlyHoroscope.standoutDays[1]} and ${monthlyHoroscope.standoutDays[2]} are especially significant for you this month. During these days, you can expect remarkable experiences or moments of importance. It may be a period when you feel inspired, make significant breakthroughs, or encounter exceptional opportunities. Make the most of these exceptional days."
 
