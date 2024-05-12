@@ -126,7 +126,7 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
             progressMax = 100f
 
             // Set ProgressBar Color
-            progressBarColor = Color.BLACK
+            progressBarColor = Color.parseColor("#6750A4")
             // or with gradient
             //progressBarColorStart = Color.GRAY
             //progressBarColorEnd = Color.RED
