@@ -202,10 +202,13 @@ class CompatibilityViewModel @Inject constructor(
         val compatibilityPercentage = ((compatibilityProbability * 100).toInt()..100).random()
 
         val explanation = when (compatibilityPercentage) {
-            in 80..100 -> "¡Una combinación perfecta! Ambos tienen una gran afinidad y comparten intereses similares."
-            in 70..79 -> "Una combinación prometedora, con el potencial de una relación estable y satisfactoria."
-            in 50..69 -> "La compatibilidad puede variar, con posibles desafíos que podrían superarse con esfuerzo y comprensión mutua."
-            else -> "La compatibilidad puede ser baja y pueden surgir desafíos en la relación."
+            in 90..100 -> "Una conexión excepcional, con una profunda comprensión y armonía mutua."
+            in 80..89 -> "Una unión fuerte y apasionada, con una gran afinidad y entusiasmo compartido."
+            in 70..79 -> "Una relación prometedora, con una combinación de estabilidad y emoción."
+            in 60..69 -> "Una compatibilidad sólida, con oportunidades para el crecimiento y la comprensión mutua."
+            in 50..59 -> "Una relación en evolución, con desafíos que pueden superarse con comunicación y compromiso."
+            in 40..49 -> "Compatibilidad variable, con la necesidad de trabajar en la comprensión y la adaptación mutua."
+            else -> "Compatibilidad baja, con posibles desafíos que pueden requerir esfuerzo adicional para superar."
         }
 
         _loadVisible.value = false
