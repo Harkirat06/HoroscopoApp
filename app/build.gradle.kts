@@ -74,4 +74,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("org.jsoup:jsoup:1.14.3")
+    implementation("com.mikhaellopez:circularprogressbar:3.1.0")
 }

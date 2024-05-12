@@ -41,6 +41,15 @@ class CompatibilityViewModel @Inject constructor(
     private val _image = MutableStateFlow<String?>(null)
     val image = _image.asStateFlow()
 
+    private val _resultVisible = MutableStateFlow(false)
+    val resultVisible = _resultVisible.asStateFlow()
+
+    private val _loadVisible = MutableStateFlow(false)
+    val loadVisible = _loadVisible.asStateFlow()
+
+    private val _result = MutableStateFlow<Compatibility?>(null)
+    val result = _result.asStateFlow()
+
     val allFriends = rep.getAllFriend().stateIn(
         scope = viewModelScope,
         initialValue = listOf(),
@@ -164,7 +173,11 @@ class CompatibilityViewModel @Inject constructor(
         _image.value = null
     }
 
-    fun calculateCompatibility(sign1: String, sign2: String): Compatibility {
+    fun calculateCompatibility(sign1: String, sign2: String){
+        Log.d("DEE", sign1)
+        Log.d("DEE", sign2)
+        _loadVisible.value = true
+        Thread.sleep(3000)
         val compatibilityProbability = when {
             // Ejemplos de combinaciones con mayor compatibilidad
             (sign1 == "Aries" && sign2 == "Leo") || (sign1 == "Leo" && sign2 == "Aries") -> 0.8
@@ -180,6 +193,7 @@ class CompatibilityViewModel @Inject constructor(
             // Combinaciones con compatibilidad baja
             (sign1 == "Piscis" && sign2 == "Géminis") || (sign1 == "Géminis" && sign2 == "Piscis") -> 0.2
             (sign1 == "Capricornio" && sign2 == "Aries") || (sign1 == "Aries" && sign2 == "Capricornio") -> 0.15
+            (sign1 == "scorpio" && sign2 == "cancer") || (sign2 == "scorpio" && sign1 == "cancer") -> 0.15
             // Por defecto, para combinaciones no especificadas
             else -> 0.4
         }
@@ -194,7 +208,13 @@ class CompatibilityViewModel @Inject constructor(
             else -> "La compatibilidad puede ser baja y pueden surgir desafíos en la relación."
         }
 
-        return Compatibility(compatibilityPercentage, explanation)
+        _loadVisible.value = false
+        _resultVisible.value = true
+        _result.value = Compatibility(compatibilityPercentage, explanation)
+    }
+
+    fun cancel() {
+        _resultVisible.value = false
     }
 }
 

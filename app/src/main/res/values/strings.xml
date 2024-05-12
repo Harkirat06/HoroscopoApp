@@ -50,4 +50,6 @@
     <string name="loading">Loading...</string>
     <string name="previous">Previous</string>
     <string name="rellena_primero">First, you should fill all fields</string>
+    <string name="percentage_of_affinity">Percentage of affinity</string>
+    <string name="calculating">Calculating...</string>
 </resources>
