@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/userPhoto"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/user_demo"
                 />
 
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="@+id/userPhotocard"
             app:layout_constraintEnd_toStartOf="@+id/editButton"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="16sp"
             />
 
         <TextView
