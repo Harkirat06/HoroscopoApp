@@ -79,7 +79,7 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                         notifReminder = false
                         alarmService.cancelAlarms()
                         if (notifBirthdays) {
-                            setAllBirthdayAlarms()
+                            viewModel.setAllBirthdayAlarms(alarmService)
                         }
                     }
                 }
@@ -92,7 +92,7 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                 viewModel.notificationBirthdays.collect { isEnabled ->
                     if (isEnabled) {
                         notifBirthdays = true
-                        setAllBirthdayAlarms()
+                        viewModel.setAllBirthdayAlarms(alarmService)
                     } else {
                         notifBirthdays = false
                         alarmService.cancelAlarms()
@@ -116,22 +116,5 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     }
 
-    fun setAllBirthdayAlarms() {
-        val birthday = Calendar.getInstance().apply {// AQQUÍ TENGO QUE PONER EL TIEMPO DEL CUMPLEAÑOS
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, 3)
-            set(Calendar.MINUTE, 3)
-            set(Calendar.SECOND, 0)
-        }
-        val thisYear = Calendar.getInstance()
-        thisYear.set(Calendar.DAY_OF_YEAR, 1)
-        thisYear.set(Calendar.HOUR_OF_DAY, 0)
-        thisYear.set(Calendar.MINUTE, 0)
-        thisYear.set(Calendar.SECOND, 0)
-        thisYear.set(Calendar.MILLISECOND, 0)
-        val nextBirthday = thisYear.timeInMillis + birthday.timeInMillis
-
-        alarmService.setBirthdayAlarm(nextBirthday, "Paco")
-    }
 
 }
