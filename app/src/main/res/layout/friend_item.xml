@@ -12,14 +12,27 @@
         android:layout_margin="20dp"
         android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/userPhoto"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/user_demo"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/userPhotocard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="70dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-        />
+            >
+
+            <ImageView
+                android:id="@+id/userPhoto"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/user_demo"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
 
         <TextView
             android:id="@+id/nameItem"
@@ -27,8 +40,8 @@
             android:layout_height="wrap_content"
             android:text="name"
             android:paddingStart="20dp"
-            app:layout_constraintStart_toEndOf="@+id/userPhoto"
-            app:layout_constraintTop_toTopOf="@+id/userPhoto"
+            app:layout_constraintStart_toEndOf="@+id/userPhotocard"
+            app:layout_constraintTop_toTopOf="@+id/userPhotocard"
             app:layout_constraintEnd_toStartOf="@+id/editButton"
             android:textStyle="bold"
             android:textSize="18sp"
@@ -41,7 +54,7 @@
             android:layout_marginTop="5dp"
             android:paddingStart="20dp"
             android:text="xx/xx/xx"
-            app:layout_constraintStart_toEndOf="@+id/userPhoto"
+            app:layout_constraintStart_toEndOf="@+id/userPhotocard"
             app:layout_constraintTop_toBottomOf="@+id/nameItem"
             app:layout_constraintEnd_toStartOf="@+id/editButton"
             android:textSize="16sp"
@@ -55,7 +68,7 @@
             android:layout_marginTop="5dp"
             android:paddingStart="20dp"
             android:text="Valencia"
-            app:layout_constraintStart_toEndOf="@+id/userPhoto"
+            app:layout_constraintStart_toEndOf="@+id/userPhotocard"
             app:layout_constraintTop_toBottomOf="@+id/dateBirthItem"
             app:layout_constraintEnd_toStartOf="@+id/editButton"
             android:textSize="16sp"
