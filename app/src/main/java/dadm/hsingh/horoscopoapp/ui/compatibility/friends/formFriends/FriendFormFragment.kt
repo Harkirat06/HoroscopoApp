@@ -63,7 +63,6 @@ class FriendFormFragment(
                     caseCapture()
                 }
             } catch (e: Exception) {
-                Log.e("ERR", e.toString())
             }
         }
     }

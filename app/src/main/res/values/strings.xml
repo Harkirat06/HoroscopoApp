@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HoroscopoApp</string>
+    <string name="app_name">Horoscope</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="lorem" translatable="false">

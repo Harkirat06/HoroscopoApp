@@ -3,7 +3,6 @@ package dadm.hsingh.horoscopoapp.ui.compatibility.calculator
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -16,9 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentCalculatorBinding
-import dadm.hsingh.horoscopoapp.domain.model.Friend
 import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
-import dadm.hsingh.horoscopoapp.ui.compatibility.friends.FriendsListAdapter
 import kotlinx.coroutines.launch
 
 class CalculatorFragment : Fragment(R.layout.fragment_calculator){

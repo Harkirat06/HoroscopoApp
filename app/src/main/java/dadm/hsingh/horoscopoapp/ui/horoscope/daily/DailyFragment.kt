@@ -92,22 +92,7 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
             }
         }
 
-        //val frame1 = requireActivity().findViewById<FrameLayout>(R.id.frame1)
 
-        /*
-        binding.scroll1.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            val maxScroll = 500 // El valor máximo de desplazamiento para la escala
-            if (scrollY > 0) {
-                // Si el scroll es hacia abajo, calcula la escala basada en el desplazamiento
-                frame1.isVisible = false
-
-            } else {
-                // Si el scroll es hacia arriba, calcula la escala basada en el desplazamiento
-                frame1.isVisible = true
-            }
-        }
-
-         */
     }
 
     override fun onDestroyView() {
