@@ -21,7 +21,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val tabTitles = arrayListOf("Personal Info", "Astral Description")
+    private val tabTitles = arrayListOf(getString(R.string.personalInfo), getString(R.string.astralDescription))
 
     private val viewModel : ProfileViewModel by activityViewModels()
 

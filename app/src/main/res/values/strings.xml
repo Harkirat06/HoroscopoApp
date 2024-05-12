@@ -59,6 +59,16 @@
     <string name="placeBirth">Place of birth:</string>
     <string name="Time_of_birth">Time of birth:</string>
     <string name="zodiacSign">Zodiac Sign:</string>
-    <string name="challenging_days">Días Desafiantes</string>
+    <string name="challenging_days">Challenging days</string>
     <string name="highlighted_days">highlighted days</string>
+    <string name="horoscope">Horoscope</string>
+    <string name="compat">Compatibility</string>
+    <string name="settings">Settings</string>
+    <string name="calculator">Calculator</string>
+    <string name="friends">Friends</string>
+    <string name="personalInfo">Personal info</string>
+    <string name="astralDescription">Astral description</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
 </resources>

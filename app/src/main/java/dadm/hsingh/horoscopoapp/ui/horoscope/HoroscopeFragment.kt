@@ -23,7 +23,7 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
     private var _binding : FragmentHoroscopeBinding? = null
     private val binding get() = _binding!!
 
-    private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
+    private val tabTitles = arrayListOf(getString(R.string.daily),getString(R.string.weekly), getString(R.string.monthly))
 
     private val viewModel : HoroscopeViewModel by viewModels()
 

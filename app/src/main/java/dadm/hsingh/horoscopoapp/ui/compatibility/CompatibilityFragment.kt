@@ -16,7 +16,7 @@ class CompatibilityFragment : Fragment(R.layout.fragment_compatibility){
     private var _binding : FragmentCompatibilityBinding? = null
     private val binding get() = _binding!!
 
-    private val tabTitles = arrayListOf("calculator", "friends")
+    private val tabTitles = arrayListOf(getString(R.string.calculator), getString(R.string.friends))
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
