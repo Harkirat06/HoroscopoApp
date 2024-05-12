@@ -8,9 +8,9 @@
     <string name="profile">Perfil</string>
     <string name="about">Acerca de</string>
     <string name="user_information">Información de usuario</string>
-    <string name="username">Alias</string>
+    <string name="username">Alias:</string>
     <string name="gender">Género</string>
-    <string name="age">Edad</string>
+    <string name="age">Edad:</string>
     <string name="date_of_birth">Fecha de nacimiento</string>
     <string name="mobile_phone">Teléfono móvil</string>
     <string name="email">Correo</string>
@@ -46,4 +46,7 @@
     <string name="defects">Defectos:</string>
     <string name="virtues">Virtudes:</string>
     <string name="compatible_with">Compatible con:</string>
+    <string name="placeBirth">Lugar de nacimiento:</string>
+    <string name="Time_of_birth">Hora de nacimiento:</string>
+    <string name="zodiacSign">"Signo zodiacal: "</string>
 </resources>
