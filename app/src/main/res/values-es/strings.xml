@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HoroscopoApp</string>
+    <string name="app_name">Horoscopo</string>
     <string name="next">Siguiente</string>
     <string name="finish">Finalizar</string>
     <string name="zodiac_connection">Conexión zodiacal</string>

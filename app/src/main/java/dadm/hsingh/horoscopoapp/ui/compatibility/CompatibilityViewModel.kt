@@ -99,7 +99,6 @@ class CompatibilityViewModel @Inject constructor(
 
     public fun addToFavourites(name: String, dateBirth: String, timeBirth: String, placeBirth: String, uri : String?){
 
-        Log.d("HOLAAAA", "FORMAT")
 
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy") // Formato del string de fecha
         val dateBirth_local: LocalDate = LocalDate.parse(dateBirth, formatter) // Parseamos el string a LocalDate
@@ -172,8 +171,6 @@ class CompatibilityViewModel @Inject constructor(
     }
 
     fun calculateCompatibility(sign1: String, sign2: String){
-        Log.d("DEE", sign1)
-        Log.d("DEE", sign2)
         val compatibilityProbability = when {
             // Ejemplos de combinaciones con mayor compatibilidad
             (sign1 == "Aries" && sign2 == "Leo") || (sign1 == "Leo" && sign2 == "Aries") -> 0.8
@@ -209,8 +206,6 @@ class CompatibilityViewModel @Inject constructor(
 
         _resultVisible.value = true
         _result.value = Compatibility(compatibilityPercentage, explanation)
-        Log.d("primer", compatibilityPercentage.toString())
-        Log.d("primer", explanation)
     }
 
     fun cancel() {
