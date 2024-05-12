@@ -2,6 +2,7 @@ package dadm.hsingh.horoscopoapp.ui.horoscope.weekly
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.data.horoscope.weekly.WeeklyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.ranking.RankingRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
@@ -20,6 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WeeklyViewModel @Inject() constructor(
     private val weeklyRep : WeeklyHoroscopeRepository,
+    private val rep : FriendsRepository,
     private val rankRep : RankingRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
@@ -37,9 +39,11 @@ class WeeklyViewModel @Inject() constructor(
     private val _language : MutableStateFlow<String> = MutableStateFlow("")
     val language get() = _language.asStateFlow()
 
-    fun getWeeklyHoroscope() {
+    val profile_sign = rep.getFriendById("USUARIO")
+
+    fun getWeeklyHoroscope(sign: String) {
         viewModelScope.launch {
-            weeklyRep.getWeeklyHoroscope("leo").fold(
+            weeklyRep.getWeeklyHoroscope(sign).fold(
                 onSuccess = {_weeklyHoroscope.value = it},
                 onFailure = {_showError.value = it}
             )

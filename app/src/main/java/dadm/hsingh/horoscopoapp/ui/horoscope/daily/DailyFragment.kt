@@ -16,6 +16,7 @@ import com.google.mlkit.nl.translate.TranslatorOptions
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentDailyBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -38,7 +39,16 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
 
         val englishSpanishTranslator = Translation.getClient(options)
         lifecycle.addObserver(englishSpanishTranslator)
-        viewModel.getDailyHoroscope()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.profile_sign.collect {user ->
+                    if (user != null) {
+                        viewModel.getDailyHoroscope(user.zodiacSign)
+                    }
+
+                }
+            }
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

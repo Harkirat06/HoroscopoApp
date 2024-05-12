@@ -37,7 +37,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.profile_sign.collect {user ->
                     if (user != null) {
-                        //binding.profilePicture.setImageResource(user.defaultImage)
+                        binding.profilePicture.setImageResource(viewModel.getSignDrawableImage(user.zodiacSign))
                         binding.username.text = user.name
                     }
                 }

@@ -38,7 +38,16 @@ class MonthlyFragment : Fragment(R.layout.fragment_monthly){
         val englishSpanishTranslator = Translation.getClient(options)
         lifecycle.addObserver(englishSpanishTranslator)
 
-        viewModel.getMonthlyHoroscope()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.profile_sign.collect {user ->
+                    if (user != null) {
+                        viewModel.getMonthlyHoroscope(user.zodiacSign)
+                    }
+
+                }
+            }
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

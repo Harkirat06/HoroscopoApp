@@ -3,6 +3,7 @@ package dadm.hsingh.horoscopoapp.ui.horoscope.daily
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.data.horoscope.daily.DailyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
 import dadm.hsingh.horoscopoapp.domain.model.DailyHoroscope
@@ -25,6 +26,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DailyViewModel @Inject() constructor(
+    private val rep : FriendsRepository,
     private val dailyRep : DailyHoroscopeRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
@@ -38,14 +40,15 @@ class DailyViewModel @Inject() constructor(
     private val _language : MutableStateFlow<String> = MutableStateFlow("")
     val language get() = _language.asStateFlow()
 
-    fun getDailyHoroscope() {
+    val profile_sign = rep.getFriendById("USUARIO")
+
+    fun getDailyHoroscope(sign: String) {
         viewModelScope.launch {
-            dailyRep.getDailyHoroscope("leo").fold(
+            dailyRep.getDailyHoroscope(sign).fold(
                 onSuccess = {_dailyHoroscope.value = it},
                 onFailure = {_showError.value = it}
             )
         }
-
     }
 
     fun getLanguage() {

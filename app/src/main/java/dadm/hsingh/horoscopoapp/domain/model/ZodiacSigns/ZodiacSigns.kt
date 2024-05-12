@@ -274,7 +274,7 @@ class ZodiacSigns() {
             sign.equals("aquarius") || sign.equals("acuario") -> R.drawable.rank_aquarius
             sign.equals("pisces") || sign.equals("piscis") -> R.drawable.rank_pisces
             sign.equals("aries") -> R.drawable.rank_aries
-            sign.equals("taurus") || sign.equals("tauro") -> R.drawable.taurus
+            sign.equals("taurus") || sign.equals("tauro") -> R.drawable.rank_taurus
             sign.equals("gemini") || sign.equals("geminis") || sign.equals("géminis") -> R.drawable.rank_gemini
             sign.equals("cancer") || sign.equals("cancer") || sign.equals("cáncer") -> R.drawable.rank_cancer
             sign.equals("leo") -> R.drawable.rank_leo
@@ -283,6 +283,25 @@ class ZodiacSigns() {
             sign.equals("scorpio") || sign.equals("escorpio") -> R.drawable.rank_scorpio
             sign.equals("sagittarius") || sign.equals("sagitario") -> R.drawable.rank_sagittarius
             sign.equals("capricorn") || sign.equals("capricornio") -> R.drawable.rank_capricorn
+            else -> -1
+        }
+    }
+
+    fun getSignDrawableImage(signTmp: String): Int {
+        val sign = signTmp.lowercase()
+        return when {
+            sign.equals("aquarius") || sign.equals("acuario") -> R.drawable.aquarius
+            sign.equals("pisces") || sign.equals("piscis") -> R.drawable.pisces
+            sign.equals("aries") -> R.drawable.aries
+            sign.equals("taurus") || sign.equals("tauro") -> R.drawable.taurus
+            sign.equals("gemini") || sign.equals("geminis") || sign.equals("géminis") -> R.drawable.gemini
+            sign.equals("cancer") || sign.equals("cancer") || sign.equals("cáncer") -> R.drawable.cancer
+            sign.equals("leo") -> R.drawable.leo
+            sign.equals("virgo") -> R.drawable.virgo
+            sign.equals("libra") -> R.drawable.libra
+            sign.equals("scorpio") || sign.equals("escorpio") -> R.drawable.scorpio
+            sign.equals("sagittarius") || sign.equals("sagitario") -> R.drawable.sagittarius
+            sign.equals("capricorn") || sign.equals("capricornio") -> R.drawable.capricorn
             else -> -1
         }
     }

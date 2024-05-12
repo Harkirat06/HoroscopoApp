@@ -45,6 +45,10 @@ class ProfileViewModel @Inject() constructor(
         return zodiacSigns.getSignDrawableIcon(sign)
     }
 
+    fun getSignDrawableImage(sign: String): Int {
+        return zodiacSigns.getSignDrawableIcon(sign)
+    }
+
     fun getLanguage() {
         viewModelScope.launch {
             settingsRepository.getLanguage().collect { languageCode ->

@@ -2,6 +2,7 @@ package dadm.hsingh.horoscopoapp.ui.horoscope.monthly
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.data.horoscope.monthly.MonthlyHoroscopeRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsRepository
 import dadm.hsingh.horoscopoapp.domain.model.MonthlyHoroscope
@@ -17,6 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MonthlyViewModel @Inject() constructor(
+    private val rep : FriendsRepository,
     private val monthlyRep : MonthlyHoroscopeRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
@@ -30,9 +32,11 @@ class MonthlyViewModel @Inject() constructor(
     private val _language : MutableStateFlow<String> = MutableStateFlow("")
     val language get() = _language.asStateFlow()
 
-    fun getMonthlyHoroscope() {
+    val profile_sign = rep.getFriendById("USUARIO")
+
+    fun getMonthlyHoroscope(sign: String) {
         viewModelScope.launch {
-            monthlyRep.getMonthlyHoroscope("leo").fold(
+            monthlyRep.getMonthlyHoroscope(sign).fold(
                 onSuccess = {_monthlyHoroscope.value = it},
                 onFailure = {_showError.value = it}
             )

@@ -45,7 +45,16 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
         val spanishEnglishTranslator = Translation.getClient(options2)
         lifecycle.addObserver(spanishEnglishTranslator)
 
-        viewModel.getWeeklyHoroscope()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.profile_sign.collect {user ->
+                    if (user != null) {
+                        viewModel.getWeeklyHoroscope(user.zodiacSign)
+                    }
+
+                }
+            }
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
