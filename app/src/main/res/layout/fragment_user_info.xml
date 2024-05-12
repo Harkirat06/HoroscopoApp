@@ -58,6 +58,7 @@
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
@@ -78,15 +79,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender"
+                    android:text="@string/placeBirth"
                     android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/placeBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="undefined"
+                    android:text="Valencia"
                     android:textSize="20sp"
                     android:layout_alignParentEnd="true"
                     />
@@ -108,10 +110,11 @@
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="female"
+                    android:text="25"
                     android:textSize="20sp"
                     android:layout_alignParentEnd="true"
                     />
@@ -133,6 +136,7 @@
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/dateBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
@@ -153,15 +157,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mobile_phone"
+                    android:text="@string/Time_of_birth"
                     android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/birthTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="696435965"
+                    android:text="hh:mm"
                     android:textSize="20sp"
                     android:layout_alignParentEnd="true"
                     />
@@ -176,21 +181,20 @@
                 android:layout_weight="1"
                 >
                 <TextView
-                    android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/email"
+                    android:text="@string/zodiacSign"
                     android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/zodiac_sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#6E6C6C"
-                    android:text="admin.admin@gmail.com"
-                    android:textSize="15sp"
+                    android:text="leo"
+                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignBottom="@id/email"
                     />
             </RelativeLayout>
         </LinearLayout>

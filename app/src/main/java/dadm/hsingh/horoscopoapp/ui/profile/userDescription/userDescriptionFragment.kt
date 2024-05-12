@@ -36,9 +36,8 @@ class userDescriptionFragment : Fragment(R.layout.fragment_description){
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val signTxt  = viewModel.getProfile()?.zodiacSign
-                //Poner el idioma que toca
                 viewModel.getLanguage()
+                val signTxt  = viewModel.getProfile()?.zodiacSign
                 viewModel.language.collect {lang ->
 
 

@@ -3,12 +3,17 @@ package dadm.hsingh.horoscopoapp.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentProfileBinding
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
 
@@ -17,6 +22,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 
     private val tabTitles = arrayListOf("Personal Info", "Astral Description")
 
+    private val viewModel : ProfileViewModel by activityViewModels()
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
@@ -24,8 +31,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         _binding = FragmentProfileBinding.bind(view)
 
         val adapter = TabPagerAdapter3(this)
-
         binding.viewPagerProfile.adapter = adapter
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.profile_sign.collect {user ->
+                    if (user != null) {
+                        //binding.profilePicture.setImageResource(user.defaultImage)
+                        binding.username.text = user.name
+                    }
+                }
+            }
+        }
 
 
         TabLayoutMediator(binding.tabLayoutProfile, binding.viewPagerProfile) { tab, position ->
