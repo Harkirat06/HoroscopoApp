@@ -59,23 +59,23 @@ class OnboardingViewModel @Inject constructor(
 
     fun checkRequiredFields(): Boolean {
         Log.d("check value birthDate", _birthDate.value.toString())
-        return  birthDate.value  != null &&
-                birthTime.value != null &&
-                !name.value.isNullOrBlank() &&
-                !birthPlace.value.isNullOrBlank()
+        return  _birthDate.value  != null &&
+                _birthTime.value != null &&
+                !_name.value.isNullOrBlank() &&
+                !_birthPlace.value.isNullOrBlank()
     }
 
     fun saveUser() {
-        val zodiacDate: Date = Date.from(birthDate.value!!.atStartOfDay().toInstant(ZoneOffset.ofHours(0)))
+        val zodiacDate: Date = Date.from(_birthDate.value!!.atStartOfDay().toInstant(ZoneOffset.ofHours(0)))
         val user = Friend(
             id = "USUARIO",
-            name = name.value!!,
-            dateBirth = birthDate.value!!,
-            timeBirth = birthTime.value!!,
-            placeBirth = birthPlace.value!!,
+            name = _name.value!!,
+            dateBirth = _birthDate.value!!,
+            timeBirth = _birthTime.value!!,
+            placeBirth = _birthPlace.value!!,
             defaultImage = getZodiacSignImage(zodiacDate),
             zodiacSign = getZodiacSign(zodiacDate),
-            imageUri = image.value
+            imageUri = _image.value
         )
         viewModelScope.launch {
             friendsRepo.addFriend(user)

@@ -2,6 +2,7 @@ package dadm.hsingh.horoscopoapp.ui.onboarding.screens
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -33,6 +34,23 @@ class OnboardingFirstFragment : Fragment(R.layout.fragment_onboarding_first){
 
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
+        // Primero, establece el listener para el EditText
+        binding.editTextName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No necesitas implementar esta función
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val texto = s.toString()
+                viewModel.setName(texto)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // No necesitas implementar esta función
+            }
+        })
+
+
         binding.next.setOnClickListener {
 
             if (
@@ -41,10 +59,6 @@ class OnboardingFirstFragment : Fragment(R.layout.fragment_onboarding_first){
                 && viewModel.birthTime.value != null
                 )
             {
-
-                Log.d("Setname", binding.editTextName.text.toString())
-                viewModel.setName(binding.editTextName.text.toString())
-                //viewModel.getName()?.let { name -> Log.d("Setname in Viewmodel", name) }
                 viewPager?.currentItem = 1
             }
             else {

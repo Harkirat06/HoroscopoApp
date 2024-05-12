@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="dadm.hsingh.horoscopoapp.ui.profile.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
@@ -20,16 +20,16 @@
     <fragment
         android:id="@+id/horoscopeFragment"
         android:name="dadm.hsingh.horoscopoapp.ui.horoscope.HoroscopeFragment"
-        android:label="HoroscopeFragment"
+        android:label="Horoscope"
         tools:layout="@layout/fragment_horoscope"/>
     <fragment
         android:id="@+id/compatibilityFragment"
         android:name="dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityFragment"
-        android:label="CompatibilityFragment"
+        android:label="Compatibility"
         tools:layout="@layout/fragment_compatibility"/>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="dadm.hsingh.horoscopoapp.ui.settings.SettingsFragment"
-        android:label="SettingsFragment"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings"/>
 </navigation>
