@@ -118,7 +118,7 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
         val progressBar = binding.circularProgressBar
         progressBar.apply {
             // Set Progress
-            progress = 0f
+            //progress = 0f
             // or with animation
             //setProgressWithAnimation(65f, 1000) // =1s
 
@@ -149,6 +149,12 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
 
+        progressBar.onProgressChangeListener =  {
+            binding.percentage.text = it.toInt().toString() + "%"
+        }
+
+
+
         binding.buttonCalculate.setOnClickListener{
 
             viewModel.secondFriend.value?.let { it1 -> viewModel.firstFriend.value?.let { it2 ->
@@ -163,28 +169,6 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
             viewModel.cancel()
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.loadVisible.collect {visible ->
-
-                    if (visible){
-                        Log.d("visible", visible.toString())
-                        binding.compatible1.visibility = View.GONE
-                        binding.compatible2.visibility = View.GONE
-
-                        binding.container1.visibility = View.GONE
-                        binding.container2.visibility = View.GONE
-
-                        binding.calculating.visibility = View.VISIBLE
-
-                    }else{
-                        binding.calculating.visibility = View.GONE
-                    }
-
-
-                }
-            }
-        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -220,7 +204,6 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
                 }
             }
         }
-
 
 
 

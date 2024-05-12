@@ -44,8 +44,6 @@ class CompatibilityViewModel @Inject constructor(
     private val _resultVisible = MutableStateFlow(false)
     val resultVisible = _resultVisible.asStateFlow()
 
-    private val _loadVisible = MutableStateFlow(false)
-    val loadVisible = _loadVisible.asStateFlow()
 
     private val _result = MutableStateFlow<Compatibility?>(null)
     val result = _result.asStateFlow()
@@ -176,8 +174,6 @@ class CompatibilityViewModel @Inject constructor(
     fun calculateCompatibility(sign1: String, sign2: String){
         Log.d("DEE", sign1)
         Log.d("DEE", sign2)
-        _loadVisible.value = true
-        Thread.sleep(1000)
         val compatibilityProbability = when {
             // Ejemplos de combinaciones con mayor compatibilidad
             (sign1 == "Aries" && sign2 == "Leo") || (sign1 == "Leo" && sign2 == "Aries") -> 0.8
@@ -211,7 +207,6 @@ class CompatibilityViewModel @Inject constructor(
             else -> "Compatibilidad baja, con posibles desafíos que pueden requerir esfuerzo adicional para superar."
         }
 
-        _loadVisible.value = false
         _resultVisible.value = true
         _result.value = Compatibility(compatibilityPercentage, explanation)
     }

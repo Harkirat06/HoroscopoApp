@@ -23,19 +23,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.8"
-        android:visibility="visible"
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_gravity="center"
         >
 
-        <ImageView
-            android:id="@+id/imageview_person1"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/capricorn"
-            android:scaleType="centerCrop"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            />
+            app:cardCornerRadius="70dp">
+
+            <ImageView
+                android:id="@+id/imageview_person1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/capricorn"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
 
         <Spinner
             android:id="@+id/spinner1"
@@ -53,7 +63,7 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_weight="0.8"
@@ -67,44 +77,45 @@
             android:textSize="20sp"
             />
 
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:id="@+id/circularProgressBar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="30dp"
-            app:cpb_background_progressbar_color="#b6bbd8"
-            app:cpb_background_progressbar_width="20dp"
-            app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="#3f51b5"
-            app:cpb_progressbar_width="10dp"
-            app:cpb_round_border="false"
-            />
+            >
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/circularProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cpb_background_progressbar_color="#b6bbd8"
+                app:cpb_background_progressbar_width="20dp"
+                app:cpb_progress_direction="to_right"
+                app:cpb_progressbar_color="#3f51b5"
+                app:cpb_progressbar_width="10dp"
+                app:cpb_round_border="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
     </LinearLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/calculating"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_weight="0.9"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/calculating"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:gravity="center"
-            />
-
-    </LinearLayout>
-
 
 
 
@@ -113,21 +124,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.8"
-        android:visibility="visible"
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_gravity="center"
         >
 
-
-
-        <ImageView
-            android:id="@+id/imageview_person2"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/leo"
-            android:scaleType="centerCrop"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            />
+            app:cardCornerRadius="70dp">
+
+            <ImageView
+                android:id="@+id/imageview_person2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/leo"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
 
 
         <Spinner
@@ -148,7 +167,7 @@
         android:id="@+id/container2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_weight="0.8"
@@ -171,9 +190,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="20dp"
         >
 
         <Button

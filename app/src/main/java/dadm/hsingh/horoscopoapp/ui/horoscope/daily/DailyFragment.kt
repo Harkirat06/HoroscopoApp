@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.room.util.newStringBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
@@ -63,6 +64,7 @@ class DailyFragment : Fragment(R.layout.fragment_daily){
                                         .addOnSuccessListener { translatedText ->
                                             // Translation successful.
                                             binding.textViewParagraph.text = translatedText
+
                                         }
                                         .addOnFailureListener { exception ->
                                             // Error.
