@@ -46,7 +46,7 @@ class ProfileViewModel @Inject() constructor(
     }
 
     fun getSignDrawableImage(sign: String): Int {
-        return zodiacSigns.getSignDrawableIcon(sign)
+        return zodiacSigns.getSignDrawableImage(sign)
     }
 
     fun getLanguage() {
