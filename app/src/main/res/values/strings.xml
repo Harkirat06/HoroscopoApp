@@ -53,4 +53,7 @@
     <string name="percentage_of_affinity">Percentage of affinity</string>
     <string name="calculating">Calculating...</string>
     <string name="editar_perfil_usuario">Edit user profile</string>
+    <string name="defects">Defects:</string>
+    <string name="virtues">Virtues:</string>
+    <string name="compatible_with">Compatible with:</string>
 </resources>

@@ -1,5 +1,6 @@
 package dadm.hsingh.horoscopoapp.domain.model.ZodiacSigns
 
+import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.domain.model.ZodiacSign
 
 class ZodiacSigns() {
@@ -267,6 +268,24 @@ class ZodiacSigns() {
         "pisces.jpg"
     )
 
+    fun getSignDrawableIcon(signTmp: String): Int {
+        val sign = signTmp.lowercase()
+        return when {
+            sign.equals("aquarius") || sign.equals("acuario") -> R.drawable.rank_aquarius
+            sign.equals("pisces") || sign.equals("piscis") -> R.drawable.rank_pisces
+            sign.equals("aries") -> R.drawable.rank_aries
+            sign.equals("taurus") || sign.equals("tauro") -> R.drawable.taurus
+            sign.equals("gemini") || sign.equals("geminis") || sign.equals("géminis") -> R.drawable.rank_gemini
+            sign.equals("cancer") || sign.equals("cancer") || sign.equals("cáncer") -> R.drawable.rank_cancer
+            sign.equals("leo") -> R.drawable.rank_leo
+            sign.equals("virgo") -> R.drawable.rank_virgo
+            sign.equals("libra") -> R.drawable.rank_libra
+            sign.equals("scorpio") || sign.equals("escorpio") -> R.drawable.rank_scorpio
+            sign.equals("sagittarius") || sign.equals("sagitario") -> R.drawable.rank_sagittarius
+            sign.equals("capricorn") || sign.equals("capricornio") -> R.drawable.rank_capricorn
+            else -> -1
+        }
+    }
 
     fun getZodiacSign(sign: String, lang: String): ZodiacSign? {
         //lang puede ser "es" o "en"
