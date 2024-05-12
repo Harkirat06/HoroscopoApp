@@ -34,8 +34,8 @@
     <string name="spanish_language">Spanish</string>
     <string name="your_name">Your name</string>
     <string name="your_name_hint" >The name you prefer to be called by</string>
-    <string name="birth_date">Birth Date (dd/MM/yyyy)</string>
-    <string name="time_of_birth">Time of Birth (HH:MM)</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="time_of_birth">Time of Birth</string>
     <string name="modify">Modify</string>
     <string name="notifications">Notifications</string>
     <string name="friendBirthdays">Friend birthdays</string>
@@ -59,4 +59,6 @@
     <string name="placeBirth">Place of birth:</string>
     <string name="Time_of_birth">Time of birth:</string>
     <string name="zodiacSign">Zodiac Sign:</string>
+    <string name="challenging_days">Días Desafiantes</string>
+    <string name="highlighted_days">highlighted days</string>
 </resources>

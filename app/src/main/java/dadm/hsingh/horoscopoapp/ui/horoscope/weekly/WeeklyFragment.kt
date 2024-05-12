@@ -63,7 +63,7 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
                         viewModel.getLanguage()
                         viewModel.language.collect{language->
                             if(language.isNotEmpty()){
-                                binding.textViewPeriod.text = viewModel.getDate()
+                                //binding.textViewPeriod.text = viewModel.getDate()
                                 if(language == "es"){
                                     englishSpanishTranslator.translate(weeklyHoroscope.weeklyHoroscopeText)
                                         .addOnSuccessListener { translatedText ->
@@ -129,6 +129,7 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
                                         .addOnSuccessListener { translatedText ->
                                             // Translation successful.
                                             binding.rankFecha.text = translatedText
+                                            binding.textViewPeriod.text = translatedText
                                         }
                                         .addOnFailureListener { exception ->
                                             // Error.
@@ -136,6 +137,7 @@ class WeeklyFragment : Fragment(R.layout.fragment_weekly){
                                         }
                                 }else{
                                     binding.rankFecha.text = ranking.fecha.substring(16)
+                                    binding.textViewPeriod.text = ranking.fecha.substring(16)
                                 }
                             }
 

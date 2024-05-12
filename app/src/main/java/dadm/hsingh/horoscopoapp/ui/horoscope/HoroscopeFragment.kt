@@ -14,9 +14,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dadm.hsingh.horoscopoapp.R
 import dadm.hsingh.horoscopoapp.databinding.FragmentHoroscopeBinding
 import dadm.hsingh.horoscopoapp.ui.horoscope.monthly.MonthlyViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
     private var _binding : FragmentHoroscopeBinding? = null
@@ -24,7 +25,7 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
 
     private val tabTitles = arrayListOf("Daily", "Weekly", "Monthly")
 
-    //private val viewModel : MonthlyViewModel by viewModels()
+    private val viewModel : HoroscopeViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
@@ -64,18 +65,17 @@ class HoroscopeFragment: Fragment(R.layout.fragment_horoscope) {
             }
         })
 
-        /*
+
+
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.showError.collect{ show ->
-                    if (show != null){
-                        Snackbar.make(binding.root, show.toString(), Snackbar.LENGTH_SHORT).show()
+                viewModel.profile_sign.collect{ profile ->
+                    if (profile != null){
+                        binding.mainIcon.setImageResource(profile.defaultImage)
                     }
                 }
             }
         }
-
-         */
 
 
 

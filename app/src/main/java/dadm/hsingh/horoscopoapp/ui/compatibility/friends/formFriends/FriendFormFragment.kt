@@ -144,6 +144,7 @@ class FriendFormFragment(
 
         binding.buttonCancel.setOnClickListener {
             viewModel.resetFriend()
+            viewModel.resetImageUri()
             this.dismiss()
         }
 

@@ -62,7 +62,7 @@ class DailyViewModel @Inject() constructor(
     }
     fun getDate() : String{
         val locale = if (language.value == "en") Locale.ENGLISH else Locale("es", "ES")
-        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", locale)
+        val dateFormat = SimpleDateFormat("EEEE", locale)
         val date = dateFormat.format(Date())
         return date.substring(0, 1).uppercase(Locale.getDefault()) + date.substring(1)
     }

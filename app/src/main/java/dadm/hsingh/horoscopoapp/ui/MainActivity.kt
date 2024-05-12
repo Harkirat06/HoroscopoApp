@@ -113,37 +113,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        //Testear
-        CoroutineScope(Dispatchers.IO).launch {
-            var document = Jsoup.connect("https://www.esperanzagraciaoficial.es/horoscopo-semanal/").get()
-            var items = document.select("div.row.ranking")
-
-            val html = Jsoup.parse(items.html().trimIndent())
-
-            val fecha = html.select("div.header").text()
-
-            Log.d("Scrapping", fecha)
-
-
-            // Recorrer cada elemento del ranking
-            val ranking = items.select("div.content")
-            ranking.select("ul li").forEachIndexed { index, element ->
-                val posicion = element.text().substringBefore(" ")
-                val signo = element.text().substringAfter(" ").substringBefore(" ")
-                val enlace = element.select("a").attr("href")
-                val imagen = element.select("img").attr("src")
-
-                Log.d(
-                    "Scrapping",
-                    "Posición: $posicion, Signo: $signo, Enlace: $enlace, Imagen: $imagen"
-                )
-
-            }
-        }
-
-
-
-
         modoOcuro()
         servicioNotificaciones()
     }

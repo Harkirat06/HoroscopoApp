@@ -209,6 +209,8 @@ class CompatibilityViewModel @Inject constructor(
 
         _resultVisible.value = true
         _result.value = Compatibility(compatibilityPercentage, explanation)
+        Log.d("primer", compatibilityPercentage.toString())
+        Log.d("primer", explanation)
     }
 
     fun cancel() {

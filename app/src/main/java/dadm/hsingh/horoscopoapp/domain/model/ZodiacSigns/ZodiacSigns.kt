@@ -83,7 +83,7 @@ class ZodiacSigns() {
 
     val scorpio_es: ZodiacSign = ZodiacSign(
         "Escorpio",
-        "Los Scorpio son apasionados, determinados y misteriosos. Tienen una gran profundidad emocional y son leales en sus relaciones.",
+        "Los Escorpio son apasionados, determinados y misteriosos. Tienen una gran profundidad emocional y son leales en sus relaciones.",
         listOf("Cáncer", "Piscis"),
         "23 de octubre",
         "21 de noviembre",
@@ -94,7 +94,7 @@ class ZodiacSigns() {
 
     val sagittarius_es: ZodiacSign = ZodiacSign(
         "Sagitario",
-        "Los Sagittarius son aventureros, optimistas y sinceros. Les gusta explorar y aprender, y tienen un gran sentido del humor.",
+        "Los Sagitario son aventureros, optimistas y sinceros. Les gusta explorar y aprender, y tienen un gran sentido del humor.",
         listOf("Aries", "Leo"),
         "22 de noviembre",
         "21 de diciembre",
@@ -105,7 +105,7 @@ class ZodiacSigns() {
 
     val capricorn_es: ZodiacSign = ZodiacSign(
         "Capricornio",
-        "Los Capricorn son responsables, disciplinados y ambiciosos. Tienen una gran determinación para alcanzar sus metas a largo plazo.",
+        "Los Capricornio son responsables, disciplinados y ambiciosos. Tienen una gran determinación para alcanzar sus metas a largo plazo.",
         listOf("Tauro", "Virgo"),
         "22 de diciembre",
         "19 de enero",
@@ -116,7 +116,7 @@ class ZodiacSigns() {
 
     val aquarius_es: ZodiacSign = ZodiacSign(
         "Acuario",
-        "Los Aquarius son originales, independientes y humanitarios. Tienen una mente abierta y les gusta desafiar las normas establecidas.",
+        "Los Acuario son originales, independientes y humanitarios. Tienen una mente abierta y les gusta desafiar las normas establecidas.",
         listOf("Géminis", "Libra"),
         "20 de enero",
         "18 de febrero",

@@ -5,25 +5,33 @@
     android:layout_height="match_parent"
     android:padding="30dp">
 
-    <ImageView
-        android:id="@+id/imageViewFriend"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardOnboard"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/capricorn"
+        app:cardCornerRadius="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/layoutBt"
-        />
+        >
 
+        <ImageView
+            android:id="@+id/imageViewFriend"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/capricorn"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
 
 
     <LinearLayout
         android:id="@+id/layoutBt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imageViewFriend"
+        app:layout_constraintTop_toBottomOf="@id/cardOnboard"
         android:gravity="center"
         android:layout_marginTop="20dp"
         >

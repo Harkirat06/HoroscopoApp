@@ -24,8 +24,8 @@
     <string name="spanish_language">Español</string>
     <string name="your_name">Tu nombre</string>
     <string name="your_name_hint">El nombre por el cual prefieres que te llamen</string>
-    <string name="birth_date">Fecha de nacimiento (dd/MM/yyyy)</string>
-    <string name="time_of_birth">Hora de nacimiento (HH:MM)</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="time_of_birth">Hora de nacimiento</string>
     <string name="modify">Modificar</string>
     <string name="notifications">Notificaciones</string>
     <string name="friendBirthdays">Cumpleaños de amigos</string>
@@ -49,4 +49,5 @@
     <string name="placeBirth">Lugar de nacimiento:</string>
     <string name="Time_of_birth">Hora de nacimiento:</string>
     <string name="zodiacSign">"Signo zodiacal: "</string>
+    <string name="highlighted_days">Dias Destacados</string>
 </resources>

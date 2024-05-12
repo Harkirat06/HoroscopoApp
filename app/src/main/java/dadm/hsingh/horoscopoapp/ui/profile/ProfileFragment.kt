@@ -1,5 +1,6 @@
 package dadm.hsingh.horoscopoapp.ui.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -37,7 +38,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.profile_sign.collect {user ->
                     if (user != null) {
-                        binding.profilePicture.setImageResource(viewModel.getSignDrawableImage(user.zodiacSign))
+                        if (user.imageUri == null){
+                            binding.profilePicture.setImageResource(user.defaultImage)
+                        }else{
+                            binding.profilePicture.setImageURI(Uri.parse(user.imageUri))
+                        }
                         binding.username.text = user.name
                     }
                 }

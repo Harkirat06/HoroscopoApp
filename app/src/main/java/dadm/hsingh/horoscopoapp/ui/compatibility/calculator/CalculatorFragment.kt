@@ -118,7 +118,7 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
         val progressBar = binding.circularProgressBar
         progressBar.apply {
             // Set Progress
-            //progress = 0f
+            progress = 0f
             // or with animation
             //setProgressWithAnimation(65f, 1000) // =1s
 
@@ -184,10 +184,6 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
 
 
 
-                    binding.circularProgressBar.apply {
-                        progress = 0f
-                        viewModel.result.value?.percentage?.let { setProgressWithAnimation(it.toFloat(), 4000) }
-                    }
 
 
                 }
@@ -201,6 +197,15 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
                     if (res != null) {
                         binding.textCompatible.text = res.explanation
                     }
+
+                    binding.circularProgressBar.apply {
+                        progress = 0f
+                        if (res != null) {
+                            setProgressWithAnimation(res.percentage.toFloat(), 4000)
+                        }
+                    }
+
+
                 }
             }
         }
