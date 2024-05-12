@@ -15,7 +15,7 @@ class FriendsListAdapter(val onEditClick: (Friend) -> Unit = {}, val onDeleteCli
     class ViewHolder(val onEditClick: (Friend) -> Unit, val onDeleteClick: (Friend) -> Unit, private val binding: FriendItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(friend: Friend){
             val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            binding.nameItem.text = friend.name
+            binding.nameItem.text = friend.name + " (" +friend.zodiacSign + ")"
             binding.dateBirthItem.text = friend.dateBirth.format(formatter).toString()
             binding.placeBirthItem.text = friend.placeBirth
             binding.editButton.setOnClickListener { onEditClick(friend) }
