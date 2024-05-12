@@ -168,8 +168,6 @@ class AlarmService (private val context : Context) {
         }
     }
 
-    fun setBirthdayAlarm(birthDayInMillis : Long, birthdayName: String) {
-    }
 
     fun setNextBirthdayAlarm(nextBirthDayInMillis : Long, birthdayName: String) {
         val alarmIntent = Intent(context, AlarmReceiver::class.java).apply {
