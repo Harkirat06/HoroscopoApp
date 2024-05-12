@@ -177,7 +177,7 @@ class CompatibilityViewModel @Inject constructor(
         Log.d("DEE", sign1)
         Log.d("DEE", sign2)
         _loadVisible.value = true
-        Thread.sleep(3000)
+        Thread.sleep(1000)
         val compatibilityProbability = when {
             // Ejemplos de combinaciones con mayor compatibilidad
             (sign1 == "Aries" && sign2 == "Leo") || (sign1 == "Leo" && sign2 == "Aries") -> 0.8

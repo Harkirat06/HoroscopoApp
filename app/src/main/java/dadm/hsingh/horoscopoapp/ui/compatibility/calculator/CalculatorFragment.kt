@@ -3,6 +3,7 @@ package dadm.hsingh.horoscopoapp.ui.compatibility.calculator
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -117,9 +118,9 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
         val progressBar = binding.circularProgressBar
         progressBar.apply {
             // Set Progress
-            progress = 65f
+            progress = 0f
             // or with animation
-            setProgressWithAnimation(65f, 1000) // =1s
+            //setProgressWithAnimation(65f, 1000) // =1s
 
             // Set Progress Max
             progressMax = 100f
@@ -127,32 +128,35 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
             // Set ProgressBar Color
             progressBarColor = Color.BLACK
             // or with gradient
-            progressBarColorStart = Color.GRAY
-            progressBarColorEnd = Color.RED
+            //progressBarColorStart = Color.GRAY
+            //progressBarColorEnd = Color.RED
             progressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
 
             // Set background ProgressBar Color
             backgroundProgressBarColor = Color.GRAY
             // or with gradient
-            backgroundProgressBarColorStart = Color.WHITE
-            backgroundProgressBarColorEnd = Color.RED
+            //backgroundProgressBarColorStart = Color.WHITE
+            //backgroundProgressBarColorEnd = Color.RED
             backgroundProgressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
 
             // Set Width
-            progressBarWidth = 7f // in DP
+            progressBarWidth = 13f // in DP
             backgroundProgressBarWidth = 3f // in DP
 
             // Other
-            roundBorder = true
+            roundBorder = false
             startAngle = 180f
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
 
         binding.buttonCalculate.setOnClickListener{
+
             viewModel.secondFriend.value?.let { it1 -> viewModel.firstFriend.value?.let { it2 ->
                 viewModel.calculateCompatibility(
                     it2.zodiacSign, it1.zodiacSign)
             } }
+
+
         }
 
         binding.buttonCancel.setOnClickListener {
@@ -163,7 +167,21 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loadVisible.collect {visible ->
 
-                    //binding.calculating.visibility = if (visible) {View.VISIBLE} else {View.GONE}
+                    if (visible){
+                        Log.d("visible", visible.toString())
+                        binding.compatible1.visibility = View.GONE
+                        binding.compatible2.visibility = View.GONE
+
+                        binding.container1.visibility = View.GONE
+                        binding.container2.visibility = View.GONE
+
+                        binding.calculating.visibility = View.VISIBLE
+
+                    }else{
+                        binding.calculating.visibility = View.GONE
+                    }
+
+
                 }
             }
         }
@@ -177,8 +195,16 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator){
                     binding.buttonCalculate.visibility = if (visible) {View.GONE} else {View.VISIBLE}
                     binding.buttonCancel.visibility = if (visible) {View.VISIBLE} else {View.GONE}
 
-                    binding.circularProgressBar.progress =
-                        (viewModel.result.value?.percentage?.toFloat() ?: 0.0).toFloat()
+                    binding.compatible1.visibility = if (visible) {View.GONE} else {View.VISIBLE}
+                    binding.compatible2.visibility = if (visible) {View.GONE} else {View.VISIBLE}
+
+
+
+                    binding.circularProgressBar.apply {
+                        progress = 0f
+                        viewModel.result.value?.percentage?.let { setProgressWithAnimation(it.toFloat(), 4000) }
+                    }
+
 
                 }
             }
