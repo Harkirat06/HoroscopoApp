@@ -11,9 +11,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.runBlocking
-import java.time.ZoneOffset
 import java.util.Calendar
-import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,17 +40,18 @@ class SettingsViewModel @Inject() constructor(
 
     fun getFriendUser() : Friend {
         val friendUserFlow = friendsRepo.getFriendById("USUARIO")
-        var friendUser : Friend? = null
+        lateinit var friendUser : Friend
         runBlocking {
-            friendUser = friendUserFlow.first()
+            friendUser = friendUserFlow.first()!!
         }
-        return friendUser!!
+        return friendUser
     }
 
     fun setAllBirthdayAlarms(alarmService: AlarmService) {
 
         val allFriendsFlow = friendsRepo.getAllFriend()
-        var allFriends : List<Friend>? = null
+        var allFriends : List<Friend>?
+        allFriends = null
         runBlocking {
             allFriends = allFriendsFlow.first()
         }

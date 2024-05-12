@@ -10,17 +10,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dadm.hsingh.horoscopoapp.R
-import dadm.hsingh.horoscopoapp.data.friend.FriendsRepository
 import dadm.hsingh.horoscopoapp.data.settings.SettingsPreferenceDataStore
 import dadm.hsingh.horoscopoapp.databinding.FragmentSettingsBinding
 import dadm.hsingh.horoscopoapp.ui.compatibility.CompatibilityViewModel
 import dadm.hsingh.horoscopoapp.ui.compatibility.friends.formFriends.FriendFormFragment
 import dadm.hsingh.horoscopoapp.utils.AlarmService
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import java.util.Calendar
 import javax.inject.Inject
 
 @AndroidEntryPoint
